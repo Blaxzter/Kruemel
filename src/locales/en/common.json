@@ -1,0 +1,45 @@
+{
+  "appName": "Krümel",
+  "nav": {
+    "label": "Main menu",
+    "today": "Today",
+    "week": "Week"
+  },
+  "pageTitle": {
+    "today": "Today",
+    "week": "Your week",
+    "variety": "Your variety",
+    "tree": "My tree",
+    "settings": "Settings",
+    "tiles": "My tiles",
+    "intro": "Welcome"
+  },
+  "actions": {
+    "done": "Done",
+    "cancel": "Cancel",
+    "save": "Save",
+    "close": "Close",
+    "undo": "Undo",
+    "delete": "Delete",
+    "back": "Back",
+    "next": "Next",
+    "skip": "Skip",
+    "start": "Let's go"
+  },
+  "toast": {
+    "region": "Notifications",
+    "announce": "Notification",
+    "actionAlt": "{action} with Ctrl+Z"
+  },
+  "update": {
+    "available": "A new version is ready.",
+    "reload": "Reload"
+  },
+  "error": {
+    "failed": "That didn't work and wasn't saved. Please try again."
+  },
+  "startError": {
+    "title": "The diary can't start right now",
+    "text": "Your browser doesn't let the app store anything. This sometimes happens in private mode. Please open the app in a normal window."
+  }
+}

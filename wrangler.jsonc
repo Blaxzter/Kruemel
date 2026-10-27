@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "kruemel",
+  // Cloudflare account to deploy to (an id, not a secret; the login can see several accounts).
+  "account_id": "5bba05afbd252add74fdd4573c985080",
+  // Static-assets-only Worker: no script, Cloudflare serves ./dist directly.
+  // Deploy with `pnpm run deploy`: a bare `pnpm deploy` is pnpm's built-in workspace
+  // command (ERR_PNPM_CANNOT_DEPLOY) and never reaches the package.json script.
+  "compatibility_date": "2026-10-23",
+  // Custom Domain: Cloudflare creates the DNS record and certificate on deploy.
+  // Needs fabraham.dev as an active zone in the account and no existing `kruemel` record.
+  "routes": [{ "pattern": "kruemel.fabraham.dev", "custom_domain": true }],
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}

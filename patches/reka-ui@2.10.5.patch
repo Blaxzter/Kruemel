@@ -1,0 +1,64 @@
+diff --git a/dist/shared/useHideOthers.cjs b/dist/shared/useHideOthers.cjs
+index d0296758178968a6e2b57f8916a9f6a01967ed8c..5a65c0497e250724312c134564b47edad8c40b0a 100644
+--- a/dist/shared/useHideOthers.cjs
++++ b/dist/shared/useHideOthers.cjs
+@@ -13,17 +13,23 @@ const aria_hidden = require_rolldown_runtime.__toESM(require("aria-hidden"));
+ */
+ function useHideOthers(target) {
+ 	let undo;
++	// Patched (kruemel): run each undo exactly once. Upstream kept the spent undo and ran it
++	// again on unmount (and dropped it when the element changed), which unbalanced aria-hidden's
++	// counters and left the page aria-hidden for good.
++	const release = () => {
++		const fn = undo;
++		undo = void 0;
++		if (fn) fn();
++	};
+ 	(0, vue.watch)(() => (0, __vueuse_core.unrefElement)(target), (el) => {
+ 		let isInsideClosedPopover = false;
+ 		try {
+ 			isInsideClosedPopover = !!el?.closest("[popover]:not(:popover-open)");
+ 		} catch {}
++		release();
+ 		if (el && !isInsideClosedPopover) undo = (0, aria_hidden.hideOthers)(el);
+-		else if (undo) undo();
+-	});
+-	(0, vue.onUnmounted)(() => {
+-		if (undo) undo();
+ 	});
++	(0, vue.onUnmounted)(release);
+ }
+ 
+ //#endregion
+diff --git a/dist/shared/useHideOthers.js b/dist/shared/useHideOthers.js
+index c9e22b713d75fb94b81264cf2ae99d1c09e66dbb..5e53f2f4569c49d42f4e422ad35f36442bcde316 100644
+--- a/dist/shared/useHideOthers.js
++++ b/dist/shared/useHideOthers.js
+@@ -12,17 +12,23 @@ import { hideOthers } from "aria-hidden";
+ */
+ function useHideOthers(target) {
+ 	let undo;
++	// Patched (kruemel): run each undo exactly once. Upstream kept the spent undo and ran it
++	// again on unmount (and dropped it when the element changed), which unbalanced aria-hidden's
++	// counters and left the page aria-hidden for good.
++	const release = () => {
++		const fn = undo;
++		undo = void 0;
++		if (fn) fn();
++	};
+ 	watch(() => unrefElement(target), (el) => {
+ 		let isInsideClosedPopover = false;
+ 		try {
+ 			isInsideClosedPopover = !!el?.closest("[popover]:not(:popover-open)");
+ 		} catch {}
++		release();
+ 		if (el && !isInsideClosedPopover) undo = hideOthers(el);
+-		else if (undo) undo();
+-	});
+-	onUnmounted(() => {
+-		if (undo) undo();
+ 	});
++	onUnmounted(release);
+ }
+ 
+ //#endregion

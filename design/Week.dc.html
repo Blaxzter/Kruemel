@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Deine Woche</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#5B3FE0}a:hover{color:#4128B8}
+button{-webkit-tap-highlight-color:transparent}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F6F3FF; color: #231F3A; font-family: Nunito, system-ui, sans-serif; display: flex; flex-direction: column; padding: 24px 20px 20px; gap: 12px; overflow: hidden">
+
+  <header style="display: flex; flex-direction: column; gap: 2px">
+    <span style="font-size: 14px; font-weight: 700; color: #5E5878">21. bis 27. Oktober</span>
+    <h1 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 30px; line-height: 1.1">Deine Woche</h1>
+  </header>
+
+  <section aria-label="Die letzten 7 Tage" style="background: #FFFFFF; border-radius: 24px; padding: 14px 10px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px">
+    <sc-for list="{{days}}" as="d" hint-placeholder-count="7">
+      <button onClick="{{d.pick}}" aria-pressed="{{d.pressed}}" aria-label="{{d.aria}}" style="border: 0; background: {{d.bg}}; border-radius: 16px; padding: 6px 0; display: flex; flex-direction: column; align-items: center; gap: 6px; font-family: Nunito, sans-serif; color: {{d.fg}}; cursor: pointer">
+        <span style="font-size: 12px; font-weight: 700; color: {{d.sub}}">{{d.label}}</span>
+        <span style="font-size: 16px; font-weight: 800">{{d.day}}</span>
+        <span style="display: flex; flex-direction: column; align-items: center; gap: 3px; height: 66px; justify-content: flex-end">
+          <sc-for list="{{d.dots}}" as="c" hint-placeholder-count="3">
+            <span style="width: 8px; height: 8px; border-radius: 4px; background: {{c}}"></span>
+          </sc-for>
+          <sc-if value="{{d.none}}" hint-placeholder-val="{{ false }}">
+            <span style="width: 8px; height: 8px; border-radius: 4px; border: 1.5px dashed #A79FC9; box-sizing: border-box"></span>
+          </sc-if>
+        </span>
+      </button>
+    </sc-for>
+  </section>
+
+  <section style="background: #FFFFFF; border-radius: 24px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+    <h2 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 20px">{{selName}}</h2>
+    <sc-if value="{{selEmpty}}" hint-placeholder-val="{{ false }}">
+      <p style="margin: 0; font-size: 15px; font-weight: 600; color: #5E5878">An dem Tag hast du nichts eingetragen.</p>
+    </sc-if>
+    <sc-for list="{{selParts}}" as="p" hint-placeholder-count="3">
+      <div style="display: flex; gap: 12px; align-items: flex-start">
+        <span style="width: 64px; flex: none; font-size: 13px; font-weight: 800; color: #5E5878; padding-top: 6px">{{p.name}}</span>
+        <div style="display: flex; flex-wrap: wrap; gap: 6px">
+          <sc-for list="{{p.items}}" as="e" hint-placeholder-count="2">
+            <span style="border-radius: 999px; padding: 6px 10px; background: {{e.soft}}; font-size: 13px; font-weight: 700">{{e.label}}</span>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+    <sc-if value="{{selHasWater}}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #5E5878">
+        <svg width="16" height="18" viewBox="0 0 24 28" stroke="#2F7FD8" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h16l-2 22H6z" fill="#8CC4FF"/></svg>
+        <span>{{selWater}}</span>
+      </div>
+    </sc-if>
+  </section>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+    <section style="background: #FFFFFF; border-radius: 24px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 17px"><a href="Colors.dc.html" style="color: #231F3A; text-decoration: none">Deine Farben</a></h2>
+      <div role="img" aria-label="7 von 8 Farben diese Woche, Milch war noch nicht dabei" style="display: flex; height: 22px; border-radius: 11px; overflow: hidden; gap: 2px">
+        <span style="flex: 1; background: #FF8F7E"></span>
+        <span style="flex: 1; background: #FF9F5C"></span>
+        <span style="flex: 1; background: #F2BE55"></span>
+        <span style="flex: 1; background: #5FC67E"></span>
+        <span style="flex: 1; box-sizing: border-box; border: 2px dashed #73B1FF; background: #FFFFFF"></span>
+        <span style="flex: 1; background: #A893FF"></span>
+        <span style="flex: 1; background: #FF86BC"></span>
+        <span style="flex: 1; background: #B9926A"></span>
+      </div>
+      <p style="margin: 0; font-size: 13px; line-height: 1.35; color: #4A4463"><b style="color: #231F3A">7 von 8</b> Farben diese Woche. Nur Milch war noch nicht dabei.</p>
+    </section>
+
+    <section style="background: #FFFFFF; border-radius: 24px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 17px"><a href="Tree.dc.html" style="color: #231F3A; text-decoration: none">Mein Baum</a></h2>
+      <a href="Tree.dc.html" aria-label="Meinen Baum öffnen" style="align-self: center; display: block; width: 90px; height: 110px">
+        <dc-import name="TreeArt" days="{{ 23 }}" season="autumn" time="auto" size="{{ 90 }}" hint-size="90px,110px"></dc-import>
+      </a>
+      <p style="margin: 0; font-size: 13px; line-height: 1.35; color: #4A4463">6 neue Blätter diese Woche. <b style="color: #231F3A">23 insgesamt.</b></p>
+    </section>
+  </div>
+
+  <nav aria-label="Hauptmenü" style="margin-top: auto; display: flex; background: #231F3A; border-radius: 999px; padding: 6px">
+    <a href="Main.dc.html" style="flex: 1; display: flex; align-items: center; justify-content: center; height: 44px; color: #FFFFFF; font: 700 14px Nunito, sans-serif; text-decoration: none">Heute</a>
+    <a href="Week.dc.html" aria-current="page" style="flex: 1; display: flex; align-items: center; justify-content: center; height: 44px; border-radius: 999px; background: #FFFFFF; color: #231F3A; font: 800 14px Nunito, sans-serif; text-decoration: none">Woche</a>
+    <a href="Colors.dc.html" style="flex: 1; display: flex; align-items: center; justify-content: center; height: 44px; color: #FFFFFF; font: 700 14px Nunito, sans-serif; text-decoration: none">Farben</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+var TILES = {
+  fruit: { label: 'Obst', dot: '#FF8F7E', soft: '#FFD3CB' },
+  veg: { label: 'Gemüse', dot: '#5FC67E', soft: '#CDEFD6' },
+  bread: { label: 'Brot', dot: '#F2BE55', soft: '#FFE6B8' },
+  meal: { label: 'Warmes Essen', dot: '#FF9F5C', soft: '#FFD7B8' },
+  snack: { label: 'Snack', dot: '#A893FF', soft: '#E4DCFF' },
+  sweets: { label: 'Süßes', dot: '#FF86BC', soft: '#FFD1E6' },
+  dairy: { label: 'Milch & Co', dot: '#73B1FF', soft: '#D3E8FF' },
+  drink: { label: 'Kaffee & Tee', dot: '#B9926A', soft: '#EBDCCB' }
+};
+
+// Sample week for the mockup: each entry is [tile, hour].
+var DAYS = [
+  { label: 'Mi', name: 'Mittwoch', day: 21, water: 5, log: [['bread', 8], ['meal', 13], ['veg', 13], ['drink', 16]] },
+  { label: 'Do', name: 'Donnerstag', day: 22, water: 0, log: [] },
+  { label: 'Fr', name: 'Freitag', day: 23, water: 4, log: [['bread', 7], ['fruit', 10], ['snack', 15], ['meal', 19], ['sweets', 21]] },
+  { label: 'Sa', name: 'Samstag', day: 24, water: 3, log: [['drink', 11], ['sweets', 15], ['meal', 19]] },
+  { label: 'So', name: 'Sonntag', day: 25, water: 6, log: [['bread', 9], ['drink', 9], ['fruit', 12], ['meal', 13], ['veg', 18], ['sweets', 20]] },
+  { label: 'Mo', name: 'Montag', day: 26, water: 6, log: [['bread', 7], ['drink', 7], ['meal', 12], ['fruit', 14], ['snack', 20]] },
+  { label: 'Heute', name: 'Heute', day: 27, water: 3, log: [['bread', 7], ['drink', 7], ['fruit', 10]] }
+];
+var TODAY_INDEX = 6;
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sel: 5 };
+  }
+
+  renderVals() {
+    var self = this;
+    var sel = this.state.sel;
+    var days = DAYS.map(function (d, i) {
+      var isToday = i === TODAY_INDEX, isSel = i === sel;
+      return {
+        label: d.label,
+        day: d.day,
+        aria: d.name + ', ' + (d.log.length === 1 ? '1 Eintrag' : d.log.length + ' Einträge'),
+        pressed: isSel ? 'true' : 'false',
+        bg: isToday ? '#231F3A' : isSel ? '#E9E3FF' : 'transparent',
+        fg: isToday ? '#FFFFFF' : '#231F3A',
+        sub: isToday ? '#D9D4F0' : '#5E5878',
+        dots: d.log.slice(0, 7).map(function (e) { return TILES[e[0]].dot; }),
+        none: d.log.length === 0,
+        pick: function () { self.setState({ sel: i }); }
+      };
+    });
+
+    var cur = DAYS[sel];
+    var selParts = ['Morgens', 'Mittags', 'Abends'].map(function (name, p) {
+      return {
+        name: name,
+        items: cur.log.filter(function (e) { return (e[1] < 11 ? 0 : e[1] < 17 ? 1 : 2) === p; })
+          .map(function (e) { return { label: TILES[e[0]].label, soft: TILES[e[0]].soft }; })
+      };
+    }).filter(function (p) { return p.items.length > 0; });
+
+    return {
+      days: days,
+      selName: cur.name,
+      selEmpty: cur.log.length === 0,
+      selParts: selParts,
+      selHasWater: cur.water > 0,
+      selWater: cur.water === 1 ? '1 Glas Wasser' : cur.water + ' Gläser Wasser'
+    };
+  }
+}
+</script>
+</body>
+</html>

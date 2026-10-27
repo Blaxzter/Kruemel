@@ -1,0 +1,63 @@
+{
+  "title": "Einstellungen",
+  "back": "Zurück zu Heute",
+  "mode": {
+    "label": "Wenn ich auf eine Kachel tippe",
+    "quick": "Einfach eintragen",
+    "quickText": "Ein Tipp und fertig.",
+    "describe": "Kurz beschreiben",
+    "describeText": "Öffnet eine kleine Notiz: was es war und wie es geschmeckt hat."
+  },
+  "toggles": {
+    "water": "Wassergläser",
+    "waterText": "Die Wasser-Reihe auf Heute zeigen",
+    "tree": "Mein Baum",
+    "treeText": "Ein Blatt für jeden Tag, an dem du was einträgst",
+    "colors": "Vielfalt",
+    "colorsText": "Die bunte Karte in der Woche und die Seite dazu"
+  },
+  "dayStart": {
+    "label": "Neuer Tag ab",
+    "text": "Späte Snacks zählen noch zum Vortag",
+    "midnight": "Mitternacht",
+    "hour": "{h}:00"
+  },
+  "theme": {
+    "label": "Aussehen",
+    "system": "Auto",
+    "light": "Hell",
+    "dark": "Dunkel"
+  },
+  "language": {
+    "label": "Sprache",
+    "de": "Deutsch",
+    "en": "English"
+  },
+  "links": {
+    "tiles": "Meine Kacheln",
+    "tilesText": "neu, umbenennen, sortieren",
+    "backup": "Tagebuch sichern",
+    "intro": "Einführung nochmal ansehen",
+    "install": "App installieren",
+    "installText": "aufs Handy holen"
+  },
+  "footer": "Alles bleibt auf deinem Handy. Du brauchst kein Konto.",
+  "backup": {
+    "title": "Tagebuch sichern",
+    "exportText": "Speichere dein Tagebuch als Datei. Damit kannst du es später wiederherstellen oder auf ein neues Handy mitnehmen.",
+    "export": "Sicherung herunterladen",
+    "exported": "Sicherung gespeichert",
+    "importText": "Hast du eine Sicherung? Dann kannst du sie hier wieder laden.",
+    "import": "Sicherung laden",
+    "confirmTitle": "Sicherung laden?",
+    "confirmText": "Die Datei \"{file}\" ersetzt alles, was gerade in der App ist.",
+    "confirm": "Ja, laden",
+    "imported": "Sicherung geladen",
+    "error": "Die Datei konnte nicht geladen werden. Ist es eine Sicherung aus dieser App?",
+    "errors": {
+      "unreadable": "Die Datei konnte nicht gelesen werden. Versuch es bitte nochmal.",
+      "unsupportedVersion": "Diese Sicherung stammt aus einer neueren Version der App. Bitte aktualisiere die App zuerst.",
+      "invalidData": "In dieser Sicherung passt etwas nicht zusammen. Es wurde nichts geändert."
+    }
+  }
+}

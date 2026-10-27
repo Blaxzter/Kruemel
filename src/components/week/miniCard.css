@@ -1,0 +1,57 @@
+/* Shared look of the two summary cards on the Week screen. */
+.mini-card {
+  position: relative;
+  min-width: 0;
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mini-card__title {
+  font-size: 17px;
+}
+
+.mini-card__link {
+  color: var(--color-ink);
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.mini-card__link:hover {
+  color: var(--color-ink);
+  text-decoration: underline;
+}
+
+/*
+ * The whole card is the link's touch target (the title alone is only ~21px tall). It sits above
+ * the card's pictures, so a tap on the rosette count or the tree thumbnail opens the page too.
+ */
+.mini-card__link::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border-radius: var(--radius-lg);
+}
+
+.mini-card__link:focus-visible {
+  outline: none;
+}
+
+.mini-card__link:focus-visible::after {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.mini-card__text {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--color-ink-secondary);
+}
+
+.mini-card__text b {
+  color: var(--color-ink);
+}

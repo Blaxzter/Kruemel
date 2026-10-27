@@ -1,0 +1,185 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Describe.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 36,
+      "title": "Detailed mode — describe it",
+      "w": 390,
+      "x": 1410,
+      "y": 0
+    },
+    "Intro1.dc.html": {
+      "h": 844,
+      "radius": 36,
+      "title": "Intro 1: Hallo",
+      "w": 390,
+      "x": 0,
+      "y": -1300
+    },
+    "Intro2.dc.html": {
+      "h": 844,
+      "radius": 36,
+      "title": "Intro 2: Tippen",
+      "w": 390,
+      "x": 470,
+      "y": -1300
+    },
+    "Intro3.dc.html": {
+      "h": 844,
+      "radius": 36,
+      "title": "Intro 3: Dein Baum",
+      "w": 390,
+      "x": 940,
+      "y": -1300
+    },
+    "Intro4.dc.html": {
+      "h": 844,
+      "radius": 36,
+      "title": "Intro 4: Installieren",
+      "w": 390,
+      "x": 1410,
+      "y": -1300
+    },
+    "Main.dc.html": {
+      "h": 844,
+      "is_interactive": true,
+      "radius": 36,
+      "title": "Today — tap to log",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    },
+    "MainEmpty.dc.html": {
+      "h": 844,
+      "radius": 36,
+      "title": "Leer: erster Tag",
+      "w": 390,
+      "x": 3240,
+      "y": 0
+    },
+    "NewTile.dc.html": {
+      "h": 844,
+      "radius": 36,
+      "title": "Add your own tile",
+      "w": 390,
+      "x": 940,
+      "y": 0
+    },
+    "SeedGallery.dc.html": {
+      "h": 1500,
+      "title": "Seed gallery — 12 trees at 150 leaves",
+      "w": 1368,
+      "x": 0,
+      "y": 2304
+    },
+    "Settings.dc.html": {
+      "h": 970,
+      "is_interactive": true,
+      "radius": 36,
+      "title": "Settings",
+      "w": 390,
+      "x": 1880,
+      "y": 0
+    },
+    "Tree.dc.html": {
+      "h": 844,
+      "radius": 36,
+      "title": "My tree — one leaf per day",
+      "w": 390,
+      "x": 2350,
+      "y": 0
+    },
+    "TreeArt.dc.html": {
+      "h": 550,
+      "title": "Tree drawing (component)",
+      "w": 361,
+      "x": 2820,
+      "y": 0
+    },
+    "TreeEmpty.dc.html": {
+      "h": 844,
+      "radius": 36,
+      "title": "Leer: noch ein Samen",
+      "w": 390,
+      "x": 3710,
+      "y": 0
+    },
+    "TreeStages.dc.html": {
+      "h": 1220,
+      "title": "How the tree grows",
+      "w": 2620,
+      "x": 0,
+      "y": 964
+    },
+    "Week.dc.html": {
+      "h": 844,
+      "radius": 36,
+      "is_interactive": true,
+      "title": "Woche (Tage antippbar)",
+      "w": 390,
+      "x": 470,
+      "y": 0
+    },
+    "Colors.dc.html": {
+      "x": 4180,
+      "y": 0,
+      "w": 390,
+      "h": 844,
+      "title": "Tab: Farben",
+      "radius": 36
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-27T12:00:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "noteOrder": [
+    "title",
+    "intro"
+  ],
+  "notes": {
+    "intro": {
+      "kind": "title1",
+      "maxW": 1800,
+      "text": "Erster Start: Intro und Installieren",
+      "w": 240,
+      "x": 0,
+      "y": -1560
+    },
+    "title": {
+      "kind": "title1",
+      "maxW": 4570,
+      "text": "Krümel food diary — first look",
+      "w": 240,
+      "x": 0,
+      "y": -260
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Week.dc.html",
+    "NewTile.dc.html",
+    "Describe.dc.html",
+    "Settings.dc.html",
+    "Tree.dc.html",
+    "TreeArt.dc.html",
+    "TreeStages.dc.html",
+    "SeedGallery.dc.html",
+    "MainEmpty.dc.html",
+    "TreeEmpty.dc.html",
+    "Intro1.dc.html",
+    "Intro2.dc.html",
+    "Intro3.dc.html",
+    "Intro4.dc.html",
+    "Colors.dc.html"
+  ],
+  "pages": [],
+  "title": "Krümel food diary"
+}

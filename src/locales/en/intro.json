@@ -1,0 +1,60 @@
+{
+  "stepOf": "Step {n} of {total}",
+  "hello": {
+    "title": "Hello!",
+    "text": "Here you keep track of what you eat during the day. No calories and no maths.",
+    "nameLabel": "What should the app call you?",
+    "dayLabel": "When does your day start?",
+    "dayText": "Anything you eat before then still counts for the day before. A snack at half past midnight, for example."
+  },
+  "tap": {
+    "title": "Tap, done",
+    "text": "Had something to eat? Tap the matching tile. That's all you need to do.",
+    "hold": "Press and hold a tile to edit it.",
+    "more": "If you like more detail, you can turn on a short note for each entry in the settings.",
+    "toast": "Fruit logged"
+  },
+  "tree": {
+    "title": "Your tree",
+    "text": "For every day you log something, a leaf grows. Every 7 leaves a flower appears, every 30 an apple.",
+    "more": "If you take a few days off, your tree stays just as it is."
+  },
+  "install": {
+    "title": "Put the app on your phone",
+    "text": "Then you start it with one tap from the home screen, and it works without internet too.",
+    "button": "Install app",
+    "iosTitle": "On iPhone it works like this:",
+    "iosStep1": "In your browser, tap",
+    "iosShare": "Share",
+    "iosStep2": "Choose \"Add to Home Screen\"",
+    "later": "Later, let me try it first",
+    "done": "All done. You can find Krümel on your home screen now.",
+    "guide": {
+      "chrome": {
+        "title": "In Chrome it works like this:",
+        "step1": "Tap ⋮ at the top right",
+        "step2": "Choose \"Install app\" or \"Add to Home screen\""
+      },
+      "samsung": {
+        "title": "In Samsung Internet it works like this:",
+        "step1": "Tap the menu ≡ at the bottom",
+        "step2": "Choose \"Add page to\", then \"Home screen\""
+      },
+      "firefox": {
+        "title": "In Firefox it works like this:",
+        "step1": "Tap the menu ⋮",
+        "step2": "Choose \"Install\" or \"Add to Home screen\""
+      },
+      "inApp": {
+        "title": "Open it in your browser first:",
+        "step1": "Open the menu of this app, usually ⋮ or ···",
+        "step2": "Choose \"Open in browser\" and install the app there"
+      },
+      "other": {
+        "title": "It works like this:",
+        "step1": "Open your browser menu",
+        "step2": "Choose \"Install app\" or \"Add to Home screen\""
+      }
+    }
+  }
+}

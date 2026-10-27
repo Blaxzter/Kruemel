@@ -1,0 +1,11 @@
+# reka-ui is pinned to exactly 2.10.5 in package.json because of this patch (see README.md).
+patchedDependencies:
+  reka-ui@2.10.5: patches/reka-ui@2.10.5.patch
+
+# Install scripts pnpm may run: esbuild and workerd (wrangler) check or fetch their native binary.
+onlyBuiltDependencies:
+  - esbuild
+  - workerd
+# vue-demi's script only switches between Vue 2 and 3 builds; Vue 3 is the default it ships with.
+ignoredBuiltDependencies:
+  - vue-demi

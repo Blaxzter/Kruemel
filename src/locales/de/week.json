@@ -1,0 +1,30 @@
+{
+  "title": "Deine Woche",
+  "range": {
+    "sameMonth": "{from}. bis {to}. {month}",
+    "crossMonth": "{from} bis {to}"
+  },
+  "stripLabel": "Die letzten 7 Tage",
+  "today": "Heute",
+  "dayAria": "{day}, keine Einträge | {day}, 1 Eintrag | {day}, {n} Einträge",
+  "dayCount": "keine Einträge | 1 Eintrag | {n} Einträge",
+  "empty": "An dem Tag hast du nichts eingetragen.",
+  "parts": {
+    "morning": "Morgens",
+    "midday": "Mittags",
+    "evening": "Abends"
+  },
+  "water": "{n} Glas Wasser | {n} Gläser Wasser",
+  "varietyCard": {
+    "title": "Deine Vielfalt",
+    "aria": "Deine Vielfalt, {n} von {total} Kacheln diese Woche",
+    "count": "{n} von {total} diese Woche.",
+    "tagline": "Je bunter, desto abwechslungsreicher."
+  },
+  "treeCard": {
+    "title": "Mein Baum",
+    "open": "Meinen Baum öffnen",
+    "newLeaves": "Diese Woche noch kein neues Blatt. | 1 neues Blatt diese Woche. | {n} neue Blätter diese Woche.",
+    "total": "{n} insgesamt."
+  }
+}

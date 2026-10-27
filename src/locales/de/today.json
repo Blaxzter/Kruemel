@@ -1,0 +1,56 @@
+{
+  "greeting": {
+    "morning": "Guten Morgen",
+    "day": "Hallo",
+    "evening": "Guten Abend",
+    "withName": "{greeting}, {name}"
+  },
+  "treePill": "Mein Baum, noch keine Blätter | Mein Baum, {n} Blatt | Mein Baum, {n} Blätter",
+  "settings": "Einstellungen",
+  "summary": {
+    "title": "Was gab es heute? | {n} Sache heute | {n} Sachen heute",
+    "cheer": {
+      "none": "Tipp unten auf eine Kachel",
+      "start": "Guter Start",
+      "going": "Läuft",
+      "busy": "Viel los heute"
+    },
+    "columnHint": "keine Einträge, öffnen | {n} Eintrag, öffnen | {n} Einträge, öffnen",
+    "more": "+{n} mehr",
+    "later": "Später",
+    "nothingYet": "Noch nichts"
+  },
+  "parts": {
+    "morning": "Morgens",
+    "midday": "Mittags",
+    "evening": "Abends"
+  },
+  "partSheet": {
+    "empty": "Hier ist noch nichts eingetragen.",
+    "deleteAria": "{tile} um {time} löschen"
+  },
+  "tiles": {
+    "label": "Kacheln",
+    "aria": "{tile} | {tile}, heute einmal | {tile}, heute {n}-mal",
+    "custom": "Eigene",
+    "customAria": "Eigene Kachel anlegen"
+  },
+  "toast": {
+    "removed": "{tile} gelöscht",
+    "added": "{tile} eingetragen"
+  },
+  "water": {
+    "title": "Wasser",
+    "count": "{n} von {max} Gläsern",
+    "glass": "Glas {n}"
+  },
+  "edit": {
+    "title": "Kacheln bearbeiten",
+    "hint": "Tipp zum Ändern, zieh zum Verschieben.",
+    "tileAria": "{tile} bearbeiten",
+    "newTile": "Neue Kachel",
+    "on": "Kacheln bearbeiten. Tipp auf eine Kachel, um sie zu ändern.",
+    "off": "Bearbeiten beendet",
+    "moved": "{tile} ist jetzt auf Platz {n}"
+  }
+}

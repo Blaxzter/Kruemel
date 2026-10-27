@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tree drawing</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: {{w}}px; height: {{h}}px; border-radius: {{radius}}px; overflow: hidden; background: {{sky}}; font-family: Nunito, system-ui, sans-serif; color: #231F3A">
+  <svg width="{{w}}" height="{{h}}" viewBox="0 0 360 440" role="img" aria-label="{{label}}">
+    <style>
+      .sway { transform-box: view-box; transform-origin: 180px 424px; animation: tree-sway 7s ease-in-out infinite; }
+      .leaf-new { animation: leaf-pop 1.4s ease-out 0.4s both; }
+      .bird-bob { animation: bird-bob 2.6s ease-in-out infinite; }
+      .cloud-a { animation: cloud-drift 70s linear -20s infinite; }
+      .cloud-b { animation: cloud-drift 95s linear -60s infinite; }
+      .star { animation: star-twinkle 3.2s ease-in-out infinite; }
+      @keyframes tree-sway { 0%, 100% { transform: rotate(-0.6deg); } 50% { transform: rotate(0.6deg); } }
+      @keyframes leaf-pop { 0% { transform: scale(0); } 70% { transform: scale(1.3); } 100% { transform: scale(1); } }
+      @keyframes bird-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
+      @keyframes cloud-drift { from { transform: translateX(-140px); } to { transform: translateX(440px); } }
+      @keyframes star-twinkle { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+      @media (prefers-reduced-motion: reduce) { .sway, .leaf-new, .bird-bob, .cloud-a, .cloud-b, .star { animation: none; } }
+    </style>
+
+    <sc-if value="{{isNight}}" hint-placeholder-val="{{ false }}">
+      <g fill="#FFFFFF">
+        <circle class="star" cx="38" cy="44" r="1.6"></circle>
+        <circle class="star" cx="92" cy="90" r="1.2" style="animation-delay: -1s"></circle>
+        <circle class="star" cx="150" cy="34" r="1.8" style="animation-delay: -2s"></circle>
+        <circle class="star" cx="230" cy="58" r="1.3" style="animation-delay: -0.5s"></circle>
+        <circle class="star" cx="330" cy="140" r="1.5" style="animation-delay: -1.6s"></circle>
+        <circle class="star" cx="24" cy="160" r="1.3" style="animation-delay: -2.4s"></circle>
+        <circle class="star" cx="196" cy="20" r="1.1" style="animation-delay: -2.9s"></circle>
+      </g>
+      <circle cx="292" cy="72" r="20" fill="#F4F1DE"></circle>
+      <circle cx="302" cy="64" r="17" fill="{{sky}}"></circle>
+    </sc-if>
+    <sc-if value="{{hasSun}}" hint-placeholder-val="{{ true }}">
+      <circle cx="{{sun.x}}" cy="{{sun.y}}" r="{{sun.r}}" fill="{{sun.fill}}"></circle>
+    </sc-if>
+    <sc-if value="{{hasClouds}}" hint-placeholder-val="{{ true }}">
+      <g class="cloud-a" fill="#FFFFFF" opacity="0.85"><path d="M10 92 C10 82 22 78 30 84 C34 72 54 72 58 84 C66 80 76 86 74 92 Z"></path></g>
+      <g class="cloud-b" fill="#FFFFFF" opacity="0.7"><path d="M0 150 C0 142 10 139 16 143 C20 134 36 134 40 143 C46 140 54 145 52 150 Z"></path></g>
+    </sc-if>
+    <sc-if value="{{winter}}" hint-placeholder-val="{{ false }}">
+      <g fill="#FFFFFF">
+        <circle cx="42" cy="60" r="3"></circle><circle cx="100" cy="36" r="2.5"></circle><circle cx="306" cy="80" r="3"></circle><circle cx="330" cy="190" r="2"></circle><circle cx="30" cy="250" r="2.5"></circle><circle cx="318" cy="300" r="2.5"></circle><circle cx="212" cy="26" r="2"></circle>
+      </g>
+    </sc-if>
+
+    <path d="M0 426 Q180 390 360 426 L360 440 L0 440 Z" fill="{{ground}}"></path>
+    <g fill="none" stroke="{{grass}}" stroke-width="2" stroke-linecap="round">
+      <path d="M50 420 l-3 -9 M54 420 l1 -11 M58 420 l4 -8"></path>
+      <path d="M296 420 l-3 -8 M300 420 l1 -10 M304 420 l4 -7"></path>
+    </g>
+
+    <g class="sway">
+      <g transform="{{grow}}" stroke="{{bark}}" stroke-linecap="round">
+        <sc-for list="{{segments}}" as="s" hint-placeholder-count="8">
+          <line x1="{{s.x1}}" y1="{{s.y1}}" x2="{{s.x2}}" y2="{{s.y2}}" stroke-width="{{s.w}}"></line>
+        </sc-for>
+      </g>
+
+      <sc-if value="{{hasSwing}}" hint-placeholder-val="{{ false }}">
+        <g stroke="#7A5A44" stroke-width="1.6">
+          <line x1="{{swing.x1}}" y1="{{swing.top}}" x2="{{swing.x1}}" y2="{{swing.seat}}"></line>
+          <line x1="{{swing.x2}}" y1="{{swing.top}}" x2="{{swing.x2}}" y2="{{swing.seat}}"></line>
+        </g>
+        <rect x="{{swing.rx}}" y="{{swing.seat}}" width="30" height="6" rx="3" fill="#C9884F"></rect>
+      </sc-if>
+
+      <sc-for list="{{leaves}}" as="l" hint-placeholder-count="12">
+        <g transform="{{l.t}}">
+          <g class="{{l.cls}}">
+            <path d="M0 0 C3 -5 9 -6.5 15 -1 Q16 0 15 1 C9 6.5 3 5 0 0 Z" fill="{{l.fill}}" stroke="{{l.stroke}}" stroke-width="{{l.sw}}"></path>
+            <path d="M1.5 0 L12.5 0" stroke="{{rib}}" stroke-width="0.9" stroke-linecap="round" opacity="0.45"></path>
+          </g>
+        </g>
+      </sc-for>
+
+      <sc-for list="{{flowers}}" as="f" hint-placeholder-count="0">
+        <g transform="{{f.t}}" fill="{{flower}}">
+          <circle cx="0" cy="-3" r="2.6"></circle><circle cx="2.9" cy="-0.9" r="2.6"></circle><circle cx="1.8" cy="2.4" r="2.6"></circle><circle cx="-1.8" cy="2.4" r="2.6"></circle><circle cx="-2.9" cy="-0.9" r="2.6"></circle>
+          <circle cx="0" cy="0" r="1.6" fill="#F7C548"></circle>
+        </g>
+      </sc-for>
+
+      <sc-for list="{{apples}}" as="a" hint-placeholder-count="0">
+        <g transform="{{a.t}}">
+          <path d="M0 -6 L0.6 -9.5" stroke="#6E4B36" stroke-width="1.4" stroke-linecap="round"></path>
+          <path d="M0.6 -8.5 C2.5 -11 5.5 -10.5 6 -9 C4 -7.5 2 -7.5 0.6 -8.5 Z" fill="#5DB86A"></path>
+          <path d="M0 -5.5 C-3 -7.5 -7 -6 -7 -1.5 C-7 3 -3.5 6.5 0 5.5 C3.5 6.5 7 3 7 -1.5 C7 -6 3 -7.5 0 -5.5 Z" fill="#E5484D"></path>
+          <ellipse cx="-3" cy="-2.5" rx="1.4" ry="2" fill="#FFFFFF" opacity="0.55"></ellipse>
+        </g>
+      </sc-for>
+
+      <sc-if value="{{hasBird}}" hint-placeholder-val="{{ false }}">
+        <g transform="{{birdT}}">
+          <g class="bird-bob">
+            <path d="M-10 0 C-10 -7 -2 -9 4 -6 C8 -4 9 1 6 5 C1 9 -8 7 -10 0 Z" fill="#4C7BD9"></path>
+            <circle cx="6" cy="-7" r="5" fill="#4C7BD9"></circle>
+            <path d="M10.5 -7.8 L15 -6.3 L10.5 -5.2 Z" fill="#F2A541"></path>
+            <circle cx="7.4" cy="-8" r="1.1" fill="#231F3A"></circle>
+            <path d="M-10 -1 L-17 -5 L-12 3 Z" fill="#3A63B8"></path>
+            <path d="M-5 -2 C-2 -6 2 -6 3 -1" stroke="#3A63B8" stroke-width="1.6" fill="none" stroke-linecap="round"></path>
+          </g>
+          <path d="M-2 7 L-2 10 M2 7 L2 10" stroke="#6E4B36" stroke-width="1.3" stroke-linecap="round"></path>
+        </g>
+      </sc-if>
+    </g>
+
+    <sc-if value="{{isSeed}}" hint-placeholder-val="{{ false }}">
+      <path d="M160 422 Q180 404 200 422 Z" fill="{{soil}}"></path>
+      <ellipse cx="180" cy="411" rx="6.5" ry="4.5" fill="{{bark}}" transform="rotate(-20 180 411)"></ellipse>
+      <path d="M180 407 Q182 400 186 398" stroke="#5DB86A" stroke-width="2" fill="none" stroke-linecap="round"></path>
+    </sc-if>
+
+    <rect x="0" y="0" width="360" height="440" fill="{{tint}}" opacity="{{tintOpacity}}" pointer-events="none"></rect>
+  </svg>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"days":{"editor":"int","default":120,"min":0,"max":500},"season":{"editor":"enum","options":["spring","summer","autumn","winter"],"default":"autumn"},"time":{"editor":"enum","options":["auto","morning","day","evening","night"],"default":"day"},"seed":{"editor":"int","default":7,"min":1,"max":999},"size":{"editor":"int","default":340,"min":60,"max":800,"unit":"px"},"bird":{"editor":"boolean","default":false},"fresh":{"editor":"boolean","default":false},"$preview":{"width":340,"height":416}}'>
+var PALETTES = {
+  spring: { sky: '#E6F2FF', ground: '#C4E6AE', grass: '#7CBF6A', bark: '#8A5A3C', rib: '#2F7A40', flower: '#FFB3D1', leaves: ['#7CCB7A', '#9BDB8C', '#5DB86A'] },
+  summer: { sky: '#FFF4D6', ground: '#AEDB94', grass: '#5FA35A', bark: '#7E5236', rib: '#245E37', flower: '#FFFFFF', leaves: ['#4FAE6A', '#3E9A5A', '#68BF73'] },
+  autumn: { sky: '#FFEFE2', ground: '#E8D6A8', grass: '#B59A5A', bark: '#7E5236', rib: '#8A4418', flower: '#FFD9E6', leaves: ['#F2A541', '#E8743B', '#E3C04A', '#9CC26B'] },
+  winter: { sky: '#E3E9F6', ground: '#FFFFFF', grass: '#C9D3E6', bark: '#6E4B36', rib: '#24503D', flower: '#FFFFFF', leaves: ['#4F8F73', '#6AA88A', '#3F7D62'] }
+};
+
+// Sky, sun and a light tint over the whole scene for each part of the day.
+var TIMES = {
+  morning: { sky: '#FFE6D6', sun: { x: 70, y: 150, r: 16, fill: '#FFC46B' }, clouds: true, tint: '#FFB07A', tintOpacity: 0.06 },
+  day: { sky: null, sun: { x: 300, y: 58, r: 18, fill: '#FFD66B' }, clouds: true, tint: '#FFFFFF', tintOpacity: 0 },
+  evening: { sky: '#F7C2A2', sun: { x: 300, y: 250, r: 24, fill: '#FF9E5E' }, clouds: false, tint: '#FF7A3D', tintOpacity: 0.1 },
+  night: { sky: '#28305A', sun: null, clouds: false, tint: '#141838', tintOpacity: 0.32 }
+};
+
+// World is 360x440; the root sits at (CX, G). Crown blobs are jittered per seed.
+var CX = 180, G = 424;
+var CROWN = [[180, 165, 104], [112, 200, 66], [248, 195, 68], [146, 110, 62], [216, 112, 64]];
+var DI = 46, DK = 9, D = 6.5;
+var CACHE = {};
+
+function r1(v) { return Math.round(v * 10) / 10; }
+
+function rng(seed) {
+  return function () {
+    seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+    var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+function partOfDay(choice) {
+  if (TIMES[choice]) return choice;
+  var h = new Date().getHours();
+  return h >= 5 && h < 9 ? 'morning' : h >= 9 && h < 17 ? 'day' : h >= 17 && h < 21 ? 'evening' : 'night';
+}
+
+// Space colonization (Runions et al. 2007): twigs grow toward attraction points
+// inside the crown; a point is used up once a twig reaches it.
+function colonize(seed) {
+  if (CACHE[seed]) return CACHE[seed];
+  var rand = rng(seed * 9973 + 1);
+  var crown = CROWN.map(function (c) {
+    return [c[0] + (rand() - 0.5) * 34, c[1] + (rand() - 0.5) * 30, c[2] * (0.85 + rand() * 0.3)];
+  });
+
+  var attr = [];
+  while (attr.length < 420) {
+    var ax = 30 + rand() * 300, ay = 30 + rand() * 250;
+    for (var c = 0; c < crown.length; c++) {
+      var dx = ax - crown[c][0], dy = ay - crown[c][1];
+      if (dx * dx + dy * dy < crown[c][2] * crown[c][2]) { attr.push([ax, ay]); break; }
+    }
+  }
+
+  var nodes = [], grid = {};
+  function add(x, y, p) {
+    var key = Math.floor(x / DI) + ',' + Math.floor(y / DI);
+    (grid[key] || (grid[key] = [])).push(nodes.length);
+    nodes.push({ x: x, y: y, p: p });
+  }
+  add(CX, G, -1);
+  var top = 262 + rand() * 34, lean = (rand() - 0.5) * 0.25, y = G;
+  while (y > top) {
+    y -= 7;
+    add(CX + (G - y) * lean + Math.sin(y / 30) * 2.5, y, nodes.length - 1);
+  }
+  var trunk = nodes.length;
+
+  for (var it = 0; it < 260 && attr.length; it++) {
+    var pull = {}, keep = [];
+    for (var a = 0; a < attr.length; a++) {
+      var gx = Math.floor(attr[a][0] / DI), gy = Math.floor(attr[a][1] / DI);
+      var best = -1, bd = DI * DI;
+      for (var ox = -1; ox <= 1; ox++) for (var oy = -1; oy <= 1; oy++) {
+        var cell = grid[(gx + ox) + ',' + (gy + oy)];
+        if (!cell) continue;
+        for (var q = 0; q < cell.length; q++) {
+          var nd = nodes[cell[q]];
+          var ddx = attr[a][0] - nd.x, ddy = attr[a][1] - nd.y, d2 = ddx * ddx + ddy * ddy;
+          if (d2 < bd) { bd = d2; best = cell[q]; }
+        }
+      }
+      if (best >= 0 && bd < DK * DK) continue;
+      keep.push(attr[a]);
+      if (best < 0) continue;
+      var dl = Math.sqrt(bd), v = pull[best] || (pull[best] = [0, 0]);
+      v[0] += (attr[a][0] - nodes[best].x) / dl;
+      v[1] += (attr[a][1] - nodes[best].y) / dl;
+    }
+    attr = keep;
+    var ids = Object.keys(pull);
+    if (!ids.length) break;
+    ids.forEach(function (k) {
+      var n0 = nodes[+k], v = pull[k];
+      var vx = v[0] + (rand() - 0.5) * 0.4, vy = v[1] - 0.12 + (rand() - 0.5) * 0.4;
+      var l = Math.sqrt(vx * vx + vy * vy) || 1;
+      add(n0.x + D * vx / l, n0.y + D * vy / l, +k);
+    });
+  }
+  return (CACHE[seed] = { nodes: nodes, trunk: trunk });
+}
+
+class Component extends DCLogic {
+  renderVals() {
+    var raw = Math.max(0, Math.round(this.props.days ?? 120));
+    var isSeed = raw === 0;
+    var n = Math.max(1, raw);
+    var season = PALETTES[this.props.season] ? this.props.season : 'autumn';
+    var P = PALETTES[season];
+    var tod = TIMES[partOfDay(this.props.time ?? 'day')];
+    var size = Math.max(60, this.props.size ?? 340);
+    var tree = colonize(Math.max(1, Math.round(this.props.seed ?? 7)));
+    var nodes = tree.nodes, T = tree.trunk, crownN = nodes.length - T;
+
+    // The tree keeps getting bigger for roughly a year of logging.
+    function visibleAt(count) {
+      return Math.max(3, Math.min(crownN, Math.round(crownN * Math.pow(Math.min(1, count / 260), 0.75))));
+    }
+    var vis = T + visibleAt(n);
+    var s = 0.3 + 0.7 * Math.pow(Math.min(1, n / 200), 0.7);
+    function px(x) { return CX + (x - CX) * s; }
+    function py(y) { return G + (y - G) * s; }
+
+    // Leaf i gets a fixed twig the day it appears, biased toward the newest (outer) twigs.
+    var used = {}, usedCount = 0, layer = 0, spots = [];
+    for (var i = 0; i < n; i++) {
+      var V = visibleAt(i + 1);
+      if (usedCount >= V) { used = {}; usedCount = 0; layer++; }
+      var f = (i * 0.6180339887 + layer * 0.37) % 1;
+      var idx = Math.min(V - 1, Math.floor(Math.sqrt(f) * V));
+      while (used[idx]) idx = (idx + 1) % V;
+      used[idx] = true; usedCount++;
+      var node = nodes[T + idx], par = nodes[node.p];
+      var dir = Math.atan2(node.y - par.y, node.x - par.x) * 57.2958;
+      var side = (i % 2 ? 1 : -1) * (40 + (i * 13) % 25);
+      spots.push({ x: px(node.x), y: py(node.y), deg: dir + side + layer * 35 });
+    }
+
+    // Branch thickness follows how many twigs a branch carries (pipe model).
+    var desc = new Array(vis).fill(0);
+    for (var k = vis - 1; k > 0; k--) desc[nodes[k].p] += desc[k] + 1;
+    var segments = [];
+    for (var m = 1; m < vis; m++) {
+      var nd = nodes[m], pp = nodes[nd.p];
+      segments.push({ x1: r1(pp.x), y1: r1(pp.y), x2: r1(nd.x), y2: r1(nd.y), w: r1(Math.min(22, 1.1 + 0.62 * Math.sqrt(desc[m] + 1))) });
+    }
+
+    var fresh = this.props.fresh === true;
+    var leaves = spots.map(function (p, i) {
+      var sc = 0.85 + ((i * 37) % 5) * 0.07;
+      var isNew = fresh && i === n - 1;
+      return {
+        t: 'translate(' + r1(p.x) + ' ' + r1(p.y) + ') rotate(' + r1(p.deg) + ') scale(' + r1(sc) + ')',
+        cls: isNew ? 'leaf-new' : '',
+        fill: P.leaves[(i * 7) % P.leaves.length],
+        stroke: isNew ? '#FFFFFF' : 'none',
+        sw: isNew ? 2 : 0
+      };
+    });
+
+    var flowers = [];
+    for (var q = 1; q * 7 <= n; q++) {
+      var fp = spots[q * 7 - 4];
+      flowers.push({ t: 'translate(' + r1(fp.x + 3) + ' ' + r1(fp.y - 3) + ')' });
+    }
+    var apples = [];
+    for (var u = 1; u * 30 <= n; u++) {
+      var ap = spots[u * 30 - 15];
+      apples.push({ t: 'translate(' + r1(ap.x) + ' ' + r1(ap.y + 9) + ')' });
+    }
+
+    // Bird perches on the highest visible twig right of the trunk; swing hangs from a low left branch.
+    var perch = null, hook = null;
+    for (var b = T; b < vis; b++) {
+      var bn = nodes[b];
+      if (bn.x > CX + 25 && (!perch || bn.y < perch.y)) perch = bn;
+      if (bn.x < CX - 30 && bn.x > CX - 80 && (!hook || bn.y > hook.y)) hook = bn;
+    }
+    perch = perch || nodes[vis - 1];
+    hook = hook || nodes[T - 1];
+    if (isSeed) { segments = []; leaves = []; flowers = []; apples = []; }
+
+    return {
+      w: Math.round(size),
+      h: Math.round(size * 440 / 360),
+      radius: Math.round(size * 0.08),
+      label: isSeed ? 'Ein Samen in der Erde' : 'Ein Baum mit ' + n + (n === 1 ? ' Blatt' : ' Blättern'),
+      isSeed: isSeed,
+      soil: '#B08B66',
+      sky: tod.sky || P.sky,
+      isNight: !tod.sun,
+      hasSun: !!tod.sun,
+      sun: tod.sun || { x: 0, y: 0, r: 0, fill: 'none' },
+      hasClouds: tod.clouds,
+      tint: tod.tint,
+      tintOpacity: tod.tintOpacity,
+      ground: P.ground, grass: P.grass, bark: P.bark, rib: P.rib, flower: P.flower,
+      winter: season === 'winter',
+      grow: 'translate(' + CX + ' ' + G + ') scale(' + Math.round(s * 100) / 100 + ') translate(-' + CX + ' -' + G + ')',
+      segments: segments,
+      leaves: leaves,
+      flowers: flowers,
+      apples: apples,
+      hasBird: this.props.bird === true && !isSeed,
+      birdT: 'translate(' + r1(px(perch.x)) + ' ' + r1(py(perch.y) - 16) + ')',
+      hasSwing: n >= 60,
+      swing: { x1: r1(px(hook.x) - 13), x2: r1(px(hook.x) + 13), rx: r1(px(hook.x) - 15), top: r1(py(hook.y)), seat: G - 28 }
+    };
+  }
+}
+</script>
+</body>
+</html>

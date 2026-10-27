@@ -1,0 +1,15 @@
+{
+  "justNow": "Gerade eben · {time}",
+  "what": "Was war es?",
+  "optional": "(optional)",
+  "placeholder": "z. B. Nudeln mit Pesto",
+  "recent": "Hattest du schon mal",
+  "how": "Wie war es?",
+  "moods": {
+    "yum": "Lecker",
+    "ok": "Okay",
+    "meh": "Naja"
+  },
+  "save": "Speichern",
+  "justLog": "Nur eintragen"
+}

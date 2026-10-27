@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Einstellungen</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#5B3FE0}a:hover{color:#4128B8}
+button{-webkit-tap-highlight-color:transparent}
+</style>
+</helmet>
+<div style="width: 390px; height: 970px; box-sizing: border-box; background: #F6F3FF; color: #231F3A; font-family: Nunito, system-ui, sans-serif; display: flex; flex-direction: column; padding: 20px 20px 20px; gap: 14px; overflow: hidden">
+
+  <header style="display: flex; align-items: center; gap: 8px">
+    <a href="Main.dc.html" aria-label="Zurück zu Heute" style="width: 44px; height: 44px; border-radius: 22px; background: #FFFFFF; display: flex; align-items: center; justify-content: center">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#231F3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </a>
+    <h1 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 28px">Einstellungen</h1>
+  </header>
+
+  <section style="background: #FFFFFF; border-radius: 24px; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+    <h2 id="s-mode" style="margin: 0 0 2px 4px; font-size: 13px; font-weight: 800; color: #5E5878">Wenn ich auf eine Kachel tippe</h2>
+    <div role="radiogroup" aria-labelledby="s-mode" style="display: flex; flex-direction: column; gap: 8px">
+      <sc-for list="{{modes}}" as="m" hint-placeholder-count="3">
+        <button role="radio" aria-checked="{{m.on}}" onClick="{{m.pick}}" style="display: flex; align-items: center; gap: 12px; text-align: left; box-sizing: border-box; border: 2px solid {{m.border}}; border-radius: 18px; padding: 12px 14px; background: {{m.bg}}; color: #231F3A; font-family: Nunito, sans-serif; cursor: pointer">
+          <span style="display: flex; flex-direction: column; gap: 2px; flex: 1">
+            <span style="font-size: 16px; font-weight: 800">{{m.title}}</span>
+            <span style="font-size: 13px; font-weight: 600; color: #5E5878">{{m.sub}}</span>
+          </span>
+          <span style="width: 22px; height: 22px; flex: none; box-sizing: border-box; border-radius: 11px; border: 2px solid {{m.ring}}; background: {{m.dot}}; box-shadow: inset 0 0 0 3px #FFFFFF"></span>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="background: #FFFFFF; border-radius: 24px; padding: 6px 14px; display: flex; flex-direction: column">
+    <sc-for list="{{toggles}}" as="t" hint-placeholder-count="3">
+      <div style="display: flex; align-items: center; gap: 12px; min-height: 56px; border-top: {{t.line}}">
+        <span id="{{t.id}}" style="flex: 1; display: flex; flex-direction: column">
+          <span style="font-size: 15px; font-weight: 800">{{t.title}}</span>
+          <span style="font-size: 12px; font-weight: 600; color: #5E5878">{{t.sub}}</span>
+        </span>
+        <button role="switch" aria-checked="{{t.on}}" aria-labelledby="{{t.id}}" onClick="{{t.flip}}" style="width: 52px; height: 32px; flex: none; border: 0; border-radius: 16px; padding: 3px; background: {{t.track}}; display: flex; justify-content: {{t.side}}; cursor: pointer">
+          <span style="width: 26px; height: 26px; border-radius: 13px; background: #FFFFFF; box-shadow: 0 1px 3px rgba(35, 31, 58, 0.3)"></span>
+        </button>
+      </div>
+    </sc-for>
+  </section>
+
+  <section style="background: #FFFFFF; border-radius: 24px; padding: 6px 14px; display: flex; align-items: center; gap: 12px; min-height: 60px">
+    <label for="s-day" style="flex: 1; display: flex; flex-direction: column">
+      <span style="font-size: 15px; font-weight: 800">Neuer Tag ab</span>
+      <span style="font-size: 12px; font-weight: 600; color: #5E5878">Späte Snacks zählen noch zum Vortag</span>
+    </label>
+    <select id="s-day" style="height: 44px; box-sizing: border-box; border: 2px solid #EEEAF8; border-radius: 12px; padding: 0 10px; font: 800 15px Nunito, sans-serif; color: #231F3A; background: #FFFFFF">
+      <option>Mitternacht</option>
+      <option>3:00</option>
+      <option selected="selected">4:00</option>
+      <option>5:00</option>
+      <option>6:00</option>
+    </select>
+  </section>
+
+  <section style="background: #FFFFFF; border-radius: 24px; padding: 14px; display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <h2 id="s-theme" style="margin: 0 0 0 4px; font-size: 13px; font-weight: 800; color: #5E5878">Aussehen</h2>
+      <div role="radiogroup" aria-labelledby="s-theme" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; background: #F1EEFA; border-radius: 14px; padding: 4px">
+        <sc-for list="{{themes}}" as="o" hint-placeholder-count="3">
+          <button role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="height: 40px; border: 0; border-radius: 11px; background: {{o.bg}}; color: #231F3A; font: {{o.weight}} 14px Nunito, sans-serif; box-shadow: {{o.shadow}}; cursor: pointer">{{o.label}}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <h2 id="s-lang" style="margin: 0 0 0 4px; font-size: 13px; font-weight: 800; color: #5E5878">Sprache</h2>
+      <div role="radiogroup" aria-labelledby="s-lang" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; background: #F1EEFA; border-radius: 14px; padding: 4px">
+        <sc-for list="{{langs}}" as="o" hint-placeholder-count="3">
+          <button role="radio" aria-checked="{{o.on}}" onClick="{{o.pick}}" style="height: 40px; border: 0; border-radius: 11px; background: {{o.bg}}; color: #231F3A; font: {{o.weight}} 14px Nunito, sans-serif; box-shadow: {{o.shadow}}; cursor: pointer">{{o.label}}</button>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: #FFFFFF; border-radius: 24px; padding: 4px 14px; display: flex; flex-direction: column">
+    <a href="NewTile.dc.html" style="display: flex; align-items: center; justify-content: space-between; min-height: 52px; color: #231F3A; text-decoration: none; font-size: 15px; font-weight: 800">
+      <span>Meine Kacheln <span style="font-weight: 600; color: #5E5878">· neu, umbenennen, sortieren</span></span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5E5878" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+    <a href="#backup" style="display: flex; align-items: center; justify-content: space-between; min-height: 52px; border-top: 1px solid #EEEAF8; color: #231F3A; text-decoration: none; font-size: 15px; font-weight: 800">
+      <span>Tagebuch sichern</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5E5878" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+    <a href="Intro1.dc.html" style="display: flex; align-items: center; justify-content: space-between; min-height: 52px; border-top: 1px solid #EEEAF8; color: #231F3A; text-decoration: none; font-size: 15px; font-weight: 800">
+      <span>Einführung nochmal ansehen</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5E5878" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </section>
+
+  <p style="margin: auto 0 0; text-align: center; font-size: 13px; font-weight: 600; color: #5E5878">Alles bleibt auf deinem Handy. Du brauchst kein Konto.</p>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":970}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { mode: 'quick', water: true, tree: true, rainbow: true, theme: 'system', lang: 'de' };
+  }
+
+  renderVals() {
+    var self = this;
+    var s = this.state;
+
+    function seg(key, options) {
+      return options.map(function (o) {
+        var on = s[key] === o.id;
+        return {
+          label: o.label,
+          on: on ? 'true' : 'false',
+          bg: on ? '#FFFFFF' : 'transparent',
+          weight: on ? '800' : '700',
+          shadow: on ? '0 1px 4px rgba(35, 31, 58, 0.15)' : 'none',
+          pick: function () { var p = {}; p[key] = o.id; self.setState(p); }
+        };
+      });
+    }
+
+    var modes = [
+      { id: 'quick', title: 'Einfach eintragen', sub: 'Ein Tipp und fertig.' },
+      { id: 'describe', title: 'Kurz beschreiben', sub: 'Öffnet eine kleine Notiz: was es war und wie es geschmeckt hat.' }
+    ].map(function (m) {
+      var on = s.mode === m.id;
+      return {
+        title: m.title,
+        sub: m.sub,
+        on: on ? 'true' : 'false',
+        border: on ? '#6B4EFF' : '#EEEAF8',
+        bg: on ? '#F4F0FF' : '#FFFFFF',
+        ring: on ? '#6B4EFF' : '#A79FC9',
+        dot: on ? '#6B4EFF' : '#FFFFFF',
+        pick: function () { self.setState({ mode: m.id }); }
+      };
+    });
+
+    var toggles = [
+      { key: 'water', title: 'Wassergläser', sub: 'Die Wasser-Reihe auf Heute zeigen' },
+      { key: 'tree', title: 'Mein Baum', sub: 'Ein Blatt für jeden Tag, an dem du was einträgst' },
+      { key: 'rainbow', title: 'Farben', sub: 'Der Farben-Tab und die Übersicht in der Woche' }
+    ].map(function (t, i) {
+      var on = !!s[t.key];
+      return {
+        id: 'tg-' + t.key,
+        title: t.title,
+        sub: t.sub,
+        on: on ? 'true' : 'false',
+        track: on ? '#6B4EFF' : '#C9C2E3',
+        side: on ? 'flex-end' : 'flex-start',
+        line: i === 0 ? '0' : '1px solid #EEEAF8',
+        flip: function () { var p = {}; p[t.key] = !on; self.setState(p); }
+      };
+    });
+
+    return {
+      modes: modes,
+      toggles: toggles,
+      themes: seg('theme', [{ id: 'system', label: 'Auto' }, { id: 'light', label: 'Hell' }, { id: 'dark', label: 'Dunkel' }]),
+      langs: seg('lang', [{ id: 'de', label: 'Deutsch' }, { id: 'en', label: 'English' }])
+    };
+  }
+}
+</script>
+</body>
+</html>

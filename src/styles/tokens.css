@@ -1,0 +1,222 @@
+/*
+ * Design tokens. Light values come straight from design/*.dc.html.
+ * Dark theme applies when <html data-theme="dark">, or when no explicit theme is set
+ * (settings.theme === 'system') and the OS prefers dark.
+ * The dark block is duplicated on purpose: CSS cannot share one rule between a
+ * selector and a media query.
+ */
+:root {
+  color-scheme: light;
+
+  /* Surfaces and text */
+  --color-ground: #f6f3ff;
+  --color-card: #ffffff;
+  --color-surface-subtle: #f8f7fb; /* summary column background */
+  --color-surface-highlight: #efeaff; /* current part of day */
+  --color-surface-chip: #eeeaf8;
+  --color-segment-selected: #ffffff; /* chosen option in a segmented control */
+  --color-ink: #231f3a;
+  --color-ink-secondary: #4a4463;
+  --color-muted: #5e5878;
+  --color-muted-soft: #6f6890; /* "Später" / empty hints */
+  --color-faint: #8a84a3; /* chevrons, decorative only */
+  --color-line: #cfc7ec;
+  --color-line-dashed: #a79fc9;
+  --color-handle: #c9c2e3;
+
+  /* Accent */
+  --color-accent: #6b4eff;
+  --color-accent-ink: #ffffff;
+  --color-link: #5b3fe0;
+  --color-link-hover: #4128b8;
+  --color-focus: #6b4eff;
+
+  /* Inverted chrome: bottom nav, toast, tile count badge */
+  --color-inverse: #231f3a;
+  --color-inverse-ink: #ffffff;
+  --color-inverse-button: #3a3458;
+  --color-inverse-button-ink: #d9cfff;
+  --color-backdrop: rgba(35, 31, 58, 0.45);
+  --shadow-toast: 0 8px 24px rgba(35, 31, 58, 0.25);
+  --shadow-accent: 0 6px 16px rgba(107, 78, 255, 0.35);
+
+  /* Nature bits */
+  --color-leaf: #2e9e5b;
+  --color-leaf-fill: #cdefd6;
+  --color-water-stroke: #2f7fd8;
+  --color-water-fill: #8cc4ff;
+  --color-water-empty: #ffffff;
+
+  /* Tiles: soft background / strong dot. Text and icons on tiles always use --color-tile-ink. */
+  --color-tile-ink: #231f3a;
+  --tile-coral-soft: #ffd3cb;
+  --tile-coral-dot: #ff8f7e;
+  --tile-apricot-soft: #ffd7b8;
+  --tile-apricot-dot: #ff9f5c;
+  --tile-butter-soft: #ffe6b8;
+  --tile-butter-dot: #f2be55;
+  --tile-lemon-soft: #fff0a8;
+  --tile-lemon-dot: #e3c04a;
+  --tile-mint-soft: #cdefd6;
+  --tile-mint-dot: #5fc67e;
+  --tile-sky-soft: #d3e8ff;
+  --tile-sky-dot: #73b1ff;
+  --tile-lilac-soft: #e4dcff;
+  --tile-lilac-dot: #a893ff;
+  --tile-rose-soft: #ffd1e6;
+  --tile-rose-dot: #ff86bc;
+  --tile-latte-soft: #ebdccb;
+  --tile-latte-dot: #b9926a;
+
+  /* Typography */
+  --font-display: 'Fredoka', 'Nunito', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+
+  /* Radii */
+  --radius-xs: 12px;
+  --radius-sm: 16px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-sheet: 28px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+
+  /* Layout */
+  --touch-target: 44px;
+  --page-max-width: 480px;
+  --page-pad-x: 20px;
+  --page-pad-top: 28px;
+  --nav-height: 56px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-sheet: 280ms;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-ground: #15122a;
+  --color-card: #221e3b;
+  --color-surface-subtle: #2a2547;
+  --color-surface-highlight: #352c66;
+  --color-surface-chip: #2f2a4d;
+  --color-segment-selected: #4a4180;
+  --color-ink: #f2efff;
+  --color-ink-secondary: #d6d0ef;
+  --color-muted: #b9b2d6;
+  --color-muted-soft: #a9a1cb;
+  --color-faint: #8e87ad;
+  --color-line: #3d3760;
+  --color-line-dashed: #6e6699;
+  --color-handle: #4a4470;
+
+  --color-accent: #7259ff;
+  --color-accent-ink: #ffffff;
+  --color-link: #b8a8ff;
+  --color-link-hover: #d3c9ff;
+  --color-focus: #b8a8ff;
+
+  --color-inverse: #f2efff;
+  --color-inverse-ink: #231f3a;
+  --color-inverse-button: #dcd5fb;
+  --color-inverse-button-ink: #3b2a9e;
+  --color-backdrop: rgba(5, 3, 15, 0.6);
+  --shadow-toast: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-accent: 0 6px 16px rgba(0, 0, 0, 0.4);
+
+  --color-leaf: #6fd396;
+  --color-leaf-fill: #2c5a3e;
+  --color-water-stroke: #7fb8f5;
+  --color-water-fill: #4f8fd6;
+  --color-water-empty: #221e3b;
+
+  --tile-coral-soft: #e9bdb5;
+  --tile-coral-dot: #ff9d8e;
+  --tile-apricot-soft: #e9c2a4;
+  --tile-apricot-dot: #ffac70;
+  --tile-butter-soft: #e8d2a6;
+  --tile-butter-dot: #f5c868;
+  --tile-lemon-soft: #e8db98;
+  --tile-lemon-dot: #ebcb5c;
+  --tile-mint-soft: #b8d9c1;
+  --tile-mint-dot: #72d18f;
+  --tile-sky-soft: #bed2e9;
+  --tile-sky-dot: #86bdff;
+  --tile-lilac-soft: #cec6ea;
+  --tile-lilac-dot: #b6a5ff;
+  --tile-rose-soft: #e9bcd0;
+  --tile-rose-dot: #ff97c6;
+  --tile-latte-soft: #d5c7b7;
+  --tile-latte-dot: #c9a47e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+
+    --color-ground: #15122a;
+    --color-card: #221e3b;
+    --color-surface-subtle: #2a2547;
+    --color-surface-highlight: #352c66;
+    --color-surface-chip: #2f2a4d;
+    --color-segment-selected: #4a4180;
+    --color-ink: #f2efff;
+    --color-ink-secondary: #d6d0ef;
+    --color-muted: #b9b2d6;
+    --color-muted-soft: #a9a1cb;
+    --color-faint: #8e87ad;
+    --color-line: #3d3760;
+    --color-line-dashed: #6e6699;
+    --color-handle: #4a4470;
+
+    --color-accent: #7259ff;
+    --color-accent-ink: #ffffff;
+    --color-link: #b8a8ff;
+    --color-link-hover: #d3c9ff;
+    --color-focus: #b8a8ff;
+
+    --color-inverse: #f2efff;
+    --color-inverse-ink: #231f3a;
+    --color-inverse-button: #dcd5fb;
+    --color-inverse-button-ink: #3b2a9e;
+    --color-backdrop: rgba(5, 3, 15, 0.6);
+    --shadow-toast: 0 8px 24px rgba(0, 0, 0, 0.45);
+    --shadow-accent: 0 6px 16px rgba(0, 0, 0, 0.4);
+
+    --color-leaf: #6fd396;
+    --color-leaf-fill: #2c5a3e;
+    --color-water-stroke: #7fb8f5;
+    --color-water-fill: #4f8fd6;
+    --color-water-empty: #221e3b;
+
+    --tile-coral-soft: #e9bdb5;
+    --tile-coral-dot: #ff9d8e;
+    --tile-apricot-soft: #e9c2a4;
+    --tile-apricot-dot: #ffac70;
+    --tile-butter-soft: #e8d2a6;
+    --tile-butter-dot: #f5c868;
+    --tile-lemon-soft: #e8db98;
+    --tile-lemon-dot: #ebcb5c;
+    --tile-mint-soft: #b8d9c1;
+    --tile-mint-dot: #72d18f;
+    --tile-sky-soft: #bed2e9;
+    --tile-sky-dot: #86bdff;
+    --tile-lilac-soft: #cec6ea;
+    --tile-lilac-dot: #b6a5ff;
+    --tile-rose-soft: #e9bcd0;
+    --tile-rose-dot: #ff97c6;
+    --tile-latte-soft: #d5c7b7;
+    --tile-latte-dot: #c9a47e;
+  }
+}

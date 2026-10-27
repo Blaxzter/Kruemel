@@ -1,0 +1,39 @@
+{
+  "title": "My tree",
+  "back": "Back to today",
+  "seasons": {
+    "spring": "Spring",
+    "summer": "Summer",
+    "autumn": "Autumn",
+    "winter": "Winter"
+  },
+  "times": {
+    "morning": "Morning",
+    "day": "Day",
+    "evening": "Evening",
+    "night": "Night"
+  },
+  "timeLabel": "{season} · {time} · {clock}",
+  "heading": "Just a seed | 1 leaf | {n} leaves",
+  "seedText": "Your tree is waiting for its first leaf.",
+  "nextFlower": "Next flower in {n} leaf | Next flower in {n} leaves",
+  "firstApple": "first apple in {n}",
+  "nextApple": "next apple in {n}",
+  "legendLabel": "What grows on your tree",
+  "legend": {
+    "leaf": "Leaf",
+    "leafText": "every day you log something",
+    "flower": "Flower",
+    "flowerText": "every 7 leaves",
+    "apple": "Apple",
+    "appleText": "every 30 leaves",
+    "bird": "Bird",
+    "birdText": "says hello when you're back after a break"
+  },
+  "status": {
+    "seed": "Log something today and the first leaf grows.",
+    "fresh": "Today's leaf is here. It has a white outline.",
+    "waiting": "Log something today and a new leaf grows.",
+    "bird": "Nice to have you back. The bird says hello."
+  }
+}

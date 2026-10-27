@@ -1,0 +1,56 @@
+{
+  "greeting": {
+    "morning": "Good morning",
+    "day": "Hello",
+    "evening": "Good evening",
+    "withName": "{greeting}, {name}"
+  },
+  "treePill": "My tree, no leaves yet | My tree, {n} leaf | My tree, {n} leaves",
+  "settings": "Settings",
+  "summary": {
+    "title": "What did you have today? | {n} thing today | {n} things today",
+    "cheer": {
+      "none": "Tap a tile below",
+      "start": "Good start",
+      "going": "Going well",
+      "busy": "Busy day"
+    },
+    "columnHint": "no entries, open | {n} entry, open | {n} entries, open",
+    "more": "+{n} more",
+    "later": "Later",
+    "nothingYet": "Nothing yet"
+  },
+  "parts": {
+    "morning": "Morning",
+    "midday": "Midday",
+    "evening": "Evening"
+  },
+  "partSheet": {
+    "empty": "Nothing here yet.",
+    "deleteAria": "Delete {tile} at {time}"
+  },
+  "tiles": {
+    "label": "Tiles",
+    "aria": "{tile} | {tile}, once today | {tile}, {n} times today",
+    "custom": "Your own",
+    "customAria": "Add your own tile"
+  },
+  "toast": {
+    "removed": "{tile} removed",
+    "added": "{tile} logged"
+  },
+  "water": {
+    "title": "Water",
+    "count": "{n} of {max} glasses",
+    "glass": "Glass {n}"
+  },
+  "edit": {
+    "title": "Edit tiles",
+    "hint": "Tap to change, drag to move.",
+    "tileAria": "Edit {tile}",
+    "newTile": "New tile",
+    "on": "Editing tiles. Tap a tile to change it.",
+    "off": "Done editing",
+    "moved": "{tile} is now in place {n}"
+  }
+}

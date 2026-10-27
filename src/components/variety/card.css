@@ -1,0 +1,26 @@
+/* Shared look of the two cards on the Vielfalt page. */
+.card {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.card__title {
+  font-size: 18px;
+}
+
+.card__meta {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-muted);
+}

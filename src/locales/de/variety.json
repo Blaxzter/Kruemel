@@ -1,0 +1,17 @@
+{
+  "title": "Deine Vielfalt",
+  "back": "Zurück zur Woche",
+  "intro": "Jede Kachel hat ihre Farbe. Hier siehst du, wie abwechslungsreich du in letzter Zeit gegessen hast. Es gibt dabei kein richtig oder falsch.",
+  "week": {
+    "title": "Diese Woche",
+    "count": "{n} von {total} Kacheln",
+    "tile": "Kachel",
+    "had": "dabei"
+  },
+  "month": {
+    "hint": "Ein Feld pro Tag",
+    "dayWith": "{date}: {tiles}",
+    "dayNothing": "{date}: nichts eingetragen",
+    "dayLater": "{date}: kommt noch"
+  }
+}

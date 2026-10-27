@@ -1,0 +1,30 @@
+{
+  "title": "Your week",
+  "range": {
+    "sameMonth": "{from} to {to} {month}",
+    "crossMonth": "{from} to {to}"
+  },
+  "stripLabel": "The last 7 days",
+  "today": "Today",
+  "dayAria": "{day}, no entries | {day}, 1 entry | {day}, {n} entries",
+  "dayCount": "no entries | 1 entry | {n} entries",
+  "empty": "You didn't log anything that day.",
+  "parts": {
+    "morning": "Morning",
+    "midday": "Midday",
+    "evening": "Evening"
+  },
+  "water": "{n} glass of water | {n} glasses of water",
+  "varietyCard": {
+    "title": "Your variety",
+    "aria": "Your variety, {n} of {total} tiles this week",
+    "count": "{n} of {total} this week.",
+    "tagline": "The more colourful, the more varied."
+  },
+  "treeCard": {
+    "title": "My tree",
+    "open": "Open my tree",
+    "newLeaves": "No new leaf this week yet. | 1 new leaf this week. | {n} new leaves this week.",
+    "total": "{n} in total."
+  }
+}

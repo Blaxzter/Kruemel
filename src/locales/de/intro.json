@@ -1,0 +1,60 @@
+{
+  "stepOf": "Schritt {n} von {total}",
+  "hello": {
+    "title": "Hallo!",
+    "text": "Hier hältst du fest, was du über den Tag isst. Ganz ohne Kalorien und ohne Rechnen.",
+    "nameLabel": "Wie soll die App dich nennen?",
+    "dayLabel": "Wann fängt dein Tag an?",
+    "dayText": "Was du davor isst, zählt noch zum Vortag. Zum Beispiel ein Snack um halb eins."
+  },
+  "tap": {
+    "title": "Tippen, fertig",
+    "text": "Du hast was gegessen? Tipp auf die passende Kachel. Mehr musst du nicht machen.",
+    "hold": "Halte eine Kachel gedrückt, um sie zu bearbeiten.",
+    "more": "Wenn du es genauer magst, kannst du in den Einstellungen jedes Mal kurz notieren, was es war.",
+    "toast": "Obst eingetragen"
+  },
+  "tree": {
+    "title": "Dein Baum",
+    "text": "Für jeden Tag, an dem du etwas einträgst, wächst ein Blatt. Alle 7 Blätter kommt eine Blüte dazu, alle 30 ein Apfel.",
+    "more": "Machst du mal ein paar Tage Pause, bleibt dein Baum, wie er ist."
+  },
+  "install": {
+    "title": "Hol dir die App aufs Handy",
+    "text": "Dann startest du sie mit einem Tipp vom Homescreen, und sie läuft auch ohne Internet.",
+    "button": "App installieren",
+    "iosTitle": "Auf dem iPhone geht es so:",
+    "iosStep1": "Tipp in deinem Browser auf",
+    "iosShare": "Teilen",
+    "iosStep2": "Wähl \"Zum Home-Bildschirm\"",
+    "later": "Später, erst mal ausprobieren",
+    "done": "Schon erledigt. Du findest Krümel jetzt auf deinem Homescreen.",
+    "guide": {
+      "chrome": {
+        "title": "In Chrome geht es so:",
+        "step1": "Tipp oben rechts auf ⋮",
+        "step2": "Wähl \"App installieren\" oder \"Zum Startbildschirm hinzufügen\""
+      },
+      "samsung": {
+        "title": "In Samsung Internet geht es so:",
+        "step1": "Tipp unten auf das Menü ≡",
+        "step2": "Wähl \"Seite hinzufügen zu\" und dann \"Startbildschirm\""
+      },
+      "firefox": {
+        "title": "In Firefox geht es so:",
+        "step1": "Tipp auf das Menü ⋮",
+        "step2": "Wähl \"Installieren\" oder \"Zum Startbildschirm hinzufügen\""
+      },
+      "inApp": {
+        "title": "Erst im Browser öffnen:",
+        "step1": "Öffne das Menü dieser App, meist ⋮ oder ···",
+        "step2": "Wähl \"Im Browser öffnen\" und installier die App dort"
+      },
+      "other": {
+        "title": "So geht es:",
+        "step1": "Öffne das Menü deines Browsers",
+        "step2": "Wähl \"App installieren\" oder \"Zum Startbildschirm hinzufügen\""
+      }
+    }
+  }
+}

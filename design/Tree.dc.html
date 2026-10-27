@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Mein Baum</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#5B3FE0}a:hover{color:#4128B8}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F6F3FF; color: #231F3A; font-family: Nunito, system-ui, sans-serif; display: flex; flex-direction: column; padding: 20px; gap: 14px; overflow: hidden">
+
+  <header style="display: flex; align-items: center; gap: 8px">
+    <a href="Main.dc.html" aria-label="Zurück zu Heute" style="width: 44px; height: 44px; border-radius: 22px; background: #FFFFFF; display: flex; align-items: center; justify-content: center">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#231F3A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </a>
+    <h1 style="margin: 0; flex: 1; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 28px">Mein Baum</h1>
+    <span style="background: #FFE2C7; border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 800; color: #8A3F12">{{timeLabel}}</span>
+  </header>
+
+  <div style="align-self: center; width: 310px; height: 379px">
+    <dc-import name="TreeArt" days="{{days}}" season="autumn" time="auto" fresh="{{fresh}}" size="{{ 310 }}" hint-size="310px,379px"></dc-import>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 2px; padding: 0 4px">
+    <h2 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 28px">{{heading}}</h2>
+    <p style="margin: 0; font-size: 14px; font-weight: 700; color: #5E5878">{{nextText}}</p>
+  </div>
+
+  <ul aria-label="Was an deinem Baum wächst" style="list-style: none; margin: 0; padding: 6px 14px; background: #FFFFFF; border-radius: 24px; display: flex; flex-direction: column">
+    <li style="display: flex; align-items: center; gap: 12px; min-height: 42px">
+      <svg width="24" height="24" viewBox="-2 -8 20 16" aria-hidden="true"><path d="M0 0 C4 -6 11 -5.5 16 0 C11 5.5 4 6 0 0 Z" fill="#9CC26B"></path><path d="M1.5 0 L13 0" stroke="#4E6B2A" stroke-width="1" opacity="0.5"></path></svg>
+      <span style="font-size: 14px"><b>Blatt</b> <span style="color: #5E5878; font-weight: 600">· jeder Tag, an dem du was einträgst</span></span>
+    </li>
+    <li style="display: flex; align-items: center; gap: 12px; min-height: 42px; border-top: 1px solid #EEEAF8">
+      <svg width="24" height="24" viewBox="-6 -6 12 12" aria-hidden="true"><g fill="#FFB3D1"><circle cx="0" cy="-3" r="2.6"></circle><circle cx="2.9" cy="-0.9" r="2.6"></circle><circle cx="1.8" cy="2.4" r="2.6"></circle><circle cx="-1.8" cy="2.4" r="2.6"></circle><circle cx="-2.9" cy="-0.9" r="2.6"></circle></g><circle cx="0" cy="0" r="1.6" fill="#F7C548"></circle></svg>
+      <span style="font-size: 14px"><b>Blüte</b> <span style="color: #5E5878; font-weight: 600">· alle 7 Blätter</span></span>
+    </li>
+    <li style="display: flex; align-items: center; gap: 12px; min-height: 42px; border-top: 1px solid #EEEAF8">
+      <svg width="24" height="24" viewBox="-8 -11 16 18" aria-hidden="true"><path d="M0 -6 L0.6 -9.5" stroke="#6E4B36" stroke-width="1.4" stroke-linecap="round"></path><path d="M0 -5.5 C-3 -7.5 -7 -6 -7 -1.5 C-7 3 -3.5 6.5 0 5.5 C3.5 6.5 7 3 7 -1.5 C7 -6 3 -7.5 0 -5.5 Z" fill="#E5484D"></path></svg>
+      <span style="font-size: 14px"><b>Apfel</b> <span style="color: #5E5878; font-weight: 600">· alle 30 Blätter, mit Monatsrückblick</span></span>
+    </li>
+    <li style="display: flex; align-items: center; gap: 12px; min-height: 42px; border-top: 1px solid #EEEAF8">
+      <svg width="24" height="24" viewBox="-18 -13 34 24" aria-hidden="true"><path d="M-10 0 C-10 -7 -2 -9 4 -6 C8 -4 9 1 6 5 C1 9 -8 7 -10 0 Z" fill="#4C7BD9"></path><circle cx="6" cy="-7" r="5" fill="#4C7BD9"></circle><path d="M10.5 -7.8 L15 -6.3 L10.5 -5.2 Z" fill="#F2A541"></path></svg>
+      <span style="font-size: 14px"><b>Vogel</b> <span style="color: #5E5878; font-weight: 600">· sagt Hallo, wenn du nach einer Pause zurück bist</span></span>
+    </li>
+  </ul>
+
+  <div role="status" style="margin-top: auto; min-height: 56px; box-sizing: border-box; border-radius: 20px; padding: 10px 16px; background: {{statusBg}}; color: {{statusFg}}; display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 800">
+    <sc-if value="{{grown}}" hint-placeholder-val="{{ true }}">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1D6B3E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    </sc-if>
+    <span>{{statusText}}</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"days":{"editor":"int","default":23,"min":0,"max":400},"$preview":{"width":390,"height":844}}'>
+var PARTS = { morning: 'Morgen', day: 'Tag', evening: 'Abend', night: 'Nacht' };
+
+class Component extends DCLogic {
+  renderVals() {
+    var n = this.props.days ?? 23;
+    var now = new Date(), h = now.getHours();
+    var part = h >= 5 && h < 9 ? 'morning' : h >= 9 && h < 17 ? 'day' : h >= 17 && h < 21 ? 'evening' : 'night';
+    var toFlower = 7 - (n % 7);
+    var toApple = 30 - (n % 30);
+    var seed = n === 0;
+    return {
+      days: n,
+      fresh: !seed,
+      timeLabel: 'Herbst · ' + PARTS[part] + ' · ' + h + ':' + String(now.getMinutes()).padStart(2, '0'),
+      heading: seed ? 'Noch ein Samen' : n === 1 ? '1 Blatt' : n + ' Blätter',
+      nextText: seed
+        ? 'Dein Baum wartet auf dein erstes Blatt.'
+        : 'Nächste Blüte in ' + toFlower + (toFlower === 1 ? ' Blatt' : ' Blättern') + (n < 30 ? ', erster Apfel in ' : ', nächster Apfel in ') + toApple,
+      grown: !seed,
+      statusBg: seed ? '#EFEAFF' : '#DDF3E4',
+      statusFg: seed ? '#3D2E8C' : '#1D6B3E',
+      statusText: seed ? 'Trag heute etwas ein, dann wächst das erste Blatt.' : 'Das Blatt von heute ist da. Es hat einen weißen Rand.'
+    };
+  }
+}
+</script>
+</body>
+</html>

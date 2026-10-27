@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>How the tree grows</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 2620px; height: 1220px; box-sizing: border-box; padding: 48px; background: #F6F3FF; color: #231F3A; font-family: Nunito, system-ui, sans-serif; display: flex; flex-direction: column; gap: 40px">
+
+  <section style="display: flex; flex-direction: column; gap: 16px">
+    <h2 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 32px">Growing: one leaf for every day she logs</h2>
+    <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 24px">
+      <sc-for list="{{stages}}" as="s" hint-placeholder-count="7">
+        <figure style="margin: 0; display: flex; flex-direction: column; gap: 12px">
+          <dc-import name="TreeArt" days="{{s.days}}" season="autumn" time="day" hint-size="340px,416px"></dc-import>
+          <figcaption style="display: flex; flex-direction: column; gap: 2px; padding-left: 6px">
+            <span style="font-size: 20px; font-weight: 800">{{s.days}} leaves</span>
+            <span style="font-size: 16px; font-weight: 600; color: #5E5878">{{s.label}}</span>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 16px">
+    <h2 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 32px">Seasons and times of day (200 leaves)</h2>
+    <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 24px">
+      <sc-for list="{{seasons}}" as="s" hint-placeholder-count="4">
+        <figure style="margin: 0; display: flex; flex-direction: column; gap: 12px">
+          <dc-import name="TreeArt" days="{{s.days}}" season="{{s.id}}" bird="{{s.bird}}" time="{{s.time}}" hint-size="340px,416px"></dc-import>
+          <figcaption style="display: flex; flex-direction: column; gap: 2px; padding-left: 6px">
+            <span style="font-size: 20px; font-weight: 800">{{s.label}}</span>
+            <span style="font-size: 16px; font-weight: 600; color: #5E5878">{{s.sub}}</span>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2620,"height":1220}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      stages: [
+        { days: 1, label: 'A seedling with its first leaf' },
+        { days: 7, label: 'A week of leaves: first flower' },
+        { days: 30, label: 'A month: the first apple' },
+        { days: 60, label: 'Two apples and a swing' },
+        { days: 120, label: 'A proper little tree' },
+        { days: 200, label: 'Full height' },
+        { days: 365, label: 'A whole year, a big full crown' }
+      ],
+      seasons: [
+        { id: 'spring', days: 200, bird: false, time: 'morning', label: 'Spring morning', sub: 'Fresh green, pink flowers' },
+        { id: 'summer', days: 200, bird: false, time: 'day', label: 'Summer day', sub: 'Deep green, drifting clouds' },
+        { id: 'autumn', days: 200, bird: false, time: 'evening', label: 'Autumn evening', sub: 'Gold leaves, one falling' },
+        { id: 'winter', days: 200, bird: false, time: 'night', label: 'Winter night', sub: 'Snow, moon and stars' },
+        { id: 'autumn', days: 200, bird: true, time: 'day', label: 'Back after a break', sub: 'A bird comes to say hi' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

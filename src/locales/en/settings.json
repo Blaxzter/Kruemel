@@ -1,0 +1,63 @@
+{
+  "title": "Settings",
+  "back": "Back to today",
+  "mode": {
+    "label": "When I tap a tile",
+    "quick": "Just log it",
+    "quickText": "One tap and done.",
+    "describe": "Describe it",
+    "describeText": "Opens a small note: what it was and how it tasted."
+  },
+  "toggles": {
+    "water": "Glasses of water",
+    "waterText": "Show the water row on Today",
+    "tree": "My tree",
+    "treeText": "A leaf for every day you log something",
+    "colors": "Variety",
+    "colorsText": "The colourful card in the week and its page"
+  },
+  "dayStart": {
+    "label": "New day starts at",
+    "text": "Late snacks still count for the day before",
+    "midnight": "Midnight",
+    "hour": "{h}:00"
+  },
+  "theme": {
+    "label": "Appearance",
+    "system": "Auto",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "language": {
+    "label": "Language",
+    "de": "Deutsch",
+    "en": "English"
+  },
+  "links": {
+    "tiles": "My tiles",
+    "tilesText": "new, rename, sort",
+    "backup": "Back up diary",
+    "intro": "See the introduction again",
+    "install": "Install app",
+    "installText": "put it on your phone"
+  },
+  "footer": "Everything stays on your phone. You don't need an account.",
+  "backup": {
+    "title": "Back up diary",
+    "exportText": "Save your diary as a file. You can restore it later or take it to a new phone.",
+    "export": "Download backup",
+    "exported": "Backup saved",
+    "importText": "Have a backup? You can load it again here.",
+    "import": "Load backup",
+    "confirmTitle": "Load backup?",
+    "confirmText": "The file \"{file}\" replaces everything that is in the app right now.",
+    "confirm": "Yes, load it",
+    "imported": "Backup loaded",
+    "error": "The file couldn't be loaded. Is it a backup from this app?",
+    "errors": {
+      "unreadable": "The file couldn't be read. Please try again.",
+      "unsupportedVersion": "This backup comes from a newer version of the app. Please update the app first.",
+      "invalidData": "Something in this backup doesn't fit together. Nothing was changed."
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Seed gallery</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1368px; height: 1500px; box-sizing: border-box; padding: 48px; background: #F6F3FF; color: #231F3A; font-family: Nunito, system-ui, sans-serif; display: flex; flex-direction: column; gap: 24px">
+  <h2 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 32px">{{leafCount}} leaves, 12 different seeds</h2>
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px">
+    <sc-for list="{{seeds}}" as="s" hint-placeholder-count="12">
+      <figure style="margin: 0; display: flex; flex-direction: column; gap: 10px">
+        <dc-import name="TreeArt" days="{{leafCount}}" seed="{{s.seed}}" season="{{season}}" time="day" size="{{ 300 }}" hint-size="300px,367px"></dc-import>
+        <figcaption style="font-size: 18px; font-weight: 800; padding-left: 6px">Seed {{s.seed}}</figcaption>
+      </figure>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"leaves":{"editor":"int","default":150,"min":1,"max":500},"season":{"editor":"enum","options":["spring","summer","autumn","winter"],"default":"summer"},"firstSeed":{"editor":"int","default":1,"min":1,"max":988},"$preview":{"width":1368,"height":1500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var first = this.props.firstSeed ?? 1;
+    var seeds = [];
+    for (var i = 0; i < 12; i++) seeds.push({ seed: first + i });
+    return {
+      leafCount: this.props.leaves ?? 150,
+      season: this.props.season ?? 'summer',
+      seeds: seeds
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "title": "Your variety",
+  "back": "Back to the week",
+  "intro": "Every tile has its own colour. Here you can see how varied your meals have been lately. There's no right or wrong here.",
+  "week": {
+    "title": "This week",
+    "count": "{n} of {total} tiles",
+    "tile": "Tile",
+    "had": "included"
+  },
+  "month": {
+    "hint": "One square per day",
+    "dayWith": "{date}: {tiles}",
+    "dayNothing": "{date}: nothing logged",
+    "dayLater": "{date}: still to come"
+  }
+}

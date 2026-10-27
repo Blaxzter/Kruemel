@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Deine Farben</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#5B3FE0}a:hover{color:#4128B8}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F6F3FF; color: #231F3A; font-family: Nunito, system-ui, sans-serif; display: flex; flex-direction: column; padding: 24px 20px 20px; gap: 12px; overflow: hidden">
+
+  <header style="display: flex; flex-direction: column; gap: 2px">
+    <span style="font-size: 14px; font-weight: 700; color: #5E5878">Was du so gegessen hast</span>
+    <h1 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 30px; line-height: 1.1">Deine Farben</h1>
+  </header>
+
+  <section aria-labelledby="c-week" style="background: #FFFFFF; border-radius: 24px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <h2 id="c-week" style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 18px">Diese Woche</h2>
+      <span style="font-size: 13px; font-weight: 700; color: #5E5878">{{weekCount}} von 8 Farben</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 96px repeat(7, minmax(0, 1fr)); gap: 4px; align-items: center">
+      <span></span>
+      <sc-for list="{{weekDays}}" as="d" hint-placeholder-count="7">
+        <span style="text-align: center; font-size: 11px; font-weight: 800; color: {{d.fg}}">{{d.label}}</span>
+      </sc-for>
+    </div>
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="8">
+      <div style="display: grid; grid-template-columns: 96px repeat(7, minmax(0, 1fr)); gap: 4px; align-items: center">
+        <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden">
+          <span style="width: 9px; height: 9px; flex: none; border-radius: 5px; background: {{r.dot}}"></span>{{r.label}}
+        </span>
+        <sc-for list="{{r.cells}}" as="c" hint-placeholder-count="7">
+          <span style="height: 20px; border-radius: 6px; background: {{c.bg}}; box-sizing: border-box; border: {{c.border}}"></span>
+        </sc-for>
+      </div>
+    </sc-for>
+  </section>
+
+  <section aria-labelledby="c-month" style="background: #FFFFFF; border-radius: 24px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <h2 id="c-month" style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 18px">Oktober</h2>
+      <span style="font-size: 13px; font-weight: 700; color: #5E5878">Ein Feld pro Tag</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px">
+      <sc-for list="{{weekdayHeads}}" as="w" hint-placeholder-count="7">
+        <span style="text-align: center; font-size: 11px; font-weight: 800; color: #5E5878">{{w}}</span>
+      </sc-for>
+      <sc-for list="{{cells}}" as="c" hint-placeholder-count="35">
+        <div style="height: 40px; box-sizing: border-box; border-radius: 10px; padding: 4px; background: {{c.bg}}; border: {{c.border}}; display: flex; flex-direction: column; gap: 3px; opacity: {{c.opacity}}">
+          <span style="font-size: 10px; font-weight: 800; line-height: 1; color: {{c.fg}}">{{c.day}}</span>
+          <span style="display: grid; grid-template-columns: repeat(4, 6px); gap: 2px">
+            <sc-for list="{{c.dots}}" as="d" hint-placeholder-count="3">
+              <span style="width: 6px; height: 6px; border-radius: 3px; background: {{d}}"></span>
+            </sc-for>
+          </span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <nav aria-label="Hauptmenü" style="margin-top: auto; display: flex; background: #231F3A; border-radius: 999px; padding: 6px">
+    <a href="Main.dc.html" style="flex: 1; display: flex; align-items: center; justify-content: center; height: 44px; color: #FFFFFF; font: 700 14px Nunito, sans-serif; text-decoration: none">Heute</a>
+    <a href="Week.dc.html" style="flex: 1; display: flex; align-items: center; justify-content: center; height: 44px; color: #FFFFFF; font: 700 14px Nunito, sans-serif; text-decoration: none">Woche</a>
+    <a href="Colors.dc.html" aria-current="page" style="flex: 1; display: flex; align-items: center; justify-content: center; height: 44px; border-radius: 999px; background: #FFFFFF; color: #231F3A; font: 800 14px Nunito, sans-serif; text-decoration: none">Farben</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+var CATS = [
+  { k: 'fruit', label: 'Obst', dot: '#FF8F7E', soft: '#FFD3CB' },
+  { k: 'veg', label: 'Gemüse', dot: '#5FC67E', soft: '#CDEFD6' },
+  { k: 'bread', label: 'Brot', dot: '#F2BE55', soft: '#FFE6B8' },
+  { k: 'meal', label: 'Warmes Essen', dot: '#FF9F5C', soft: '#FFD7B8' },
+  { k: 'snack', label: 'Snack', dot: '#A893FF', soft: '#E4DCFF' },
+  { k: 'sweets', label: 'Süßes', dot: '#FF86BC', soft: '#FFD1E6' },
+  { k: 'dairy', label: 'Milch & Co', dot: '#73B1FF', soft: '#D3E8FF' },
+  { k: 'drink', label: 'Kaffee & Tee', dot: '#B9926A', soft: '#EBDCCB' }
+];
+
+// Sample data for the mockup: 21 to 27 October matches the Week screen.
+var WEEK = [
+  { label: 'Mi', day: 21, ate: ['bread', 'meal', 'veg', 'drink'] },
+  { label: 'Do', day: 22, ate: [] },
+  { label: 'Fr', day: 23, ate: ['bread', 'fruit', 'snack', 'meal', 'sweets'] },
+  { label: 'Sa', day: 24, ate: ['drink', 'sweets', 'meal'] },
+  { label: 'So', day: 25, ate: ['bread', 'drink', 'fruit', 'meal', 'veg', 'sweets'] },
+  { label: 'Mo', day: 26, ate: ['bread', 'snack', 'meal', 'fruit'] },
+  { label: 'Heute', day: 27, ate: ['bread', 'drink', 'fruit'] }
+];
+var TODAY = 27, FIRST_WEEKDAY = 3, DAYS_IN_MONTH = 31, SKIPPED = [5, 12, 13, 22];
+
+function sampleDay(day) {
+  var w = WEEK.filter(function (x) { return x.day === day; })[0];
+  if (w) return w.ate;
+  if (SKIPPED.indexOf(day) >= 0) return [];
+  return CATS.filter(function (c, i) { return ((day * 7 + i * 13) % 10) < 5; }).map(function (c) { return c.k; });
+}
+
+class Component extends DCLogic {
+  renderVals() {
+    var rows = CATS.map(function (c) {
+      return {
+        label: c.label,
+        dot: c.dot,
+        cells: WEEK.map(function (d) {
+          var on = d.ate.indexOf(c.k) >= 0;
+          return { bg: on ? c.dot : '#F4F2FA', border: d.day === TODAY ? '1.5px solid #231F3A' : '0' };
+        })
+      };
+    });
+    var eaten = CATS.filter(function (c) { return WEEK.some(function (d) { return d.ate.indexOf(c.k) >= 0; }); }).length;
+
+    var cells = [];
+    for (var b = 0; b < FIRST_WEEKDAY; b++) cells.push({ day: '', dots: [], bg: 'transparent', border: '0', fg: '#5E5878', opacity: 1 });
+    for (var d = 1; d <= DAYS_IN_MONTH; d++) {
+      var future = d > TODAY;
+      var ate = future ? [] : sampleDay(d);
+      cells.push({
+        day: d,
+        dots: CATS.filter(function (c) { return ate.indexOf(c.k) >= 0; }).map(function (c) { return c.dot; }),
+        bg: future ? 'transparent' : ate.length ? '#F8F6FD' : '#FFFFFF',
+        border: d === TODAY ? '2px solid #231F3A' : future ? '1.5px dashed #DCD6EE' : '1px solid #EEEAF8',
+        fg: future ? '#8A84A3' : '#231F3A',
+        opacity: 1
+      });
+    }
+    while (cells.length % 7) cells.push({ day: '', dots: [], bg: 'transparent', border: '0', fg: '#5E5878', opacity: 1 });
+
+    return {
+      weekCount: eaten,
+      weekDays: WEEK.map(function (d) { return { label: d.label, fg: d.day === TODAY ? '#231F3A' : '#5E5878' }; }),
+      rows: rows,
+      weekdayHeads: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'],
+      cells: cells
+    };
+  }
+}
+</script>
+</body>
+</html>

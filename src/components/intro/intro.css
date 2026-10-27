@@ -1,0 +1,98 @@
+/* Shared layout and text styles of the onboarding steps. */
+
+/*
+ * A step fills the intro's middle row. Only the illustration (IntroArt) shrinks when the
+ * screen is short; text and fields keep their size. If even that does not fit, the middle
+ * row scrolls and the buttons below stay where they are.
+ */
+.step {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2.4vh, 20px);
+}
+
+.step > :not(.art) {
+  flex-shrink: 0;
+}
+
+.step__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.step__title {
+  font-size: 34px;
+}
+
+.step__title:focus {
+  outline: none;
+}
+
+.step__lead {
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--color-ink-secondary);
+}
+
+.step__hint {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--color-ink-secondary);
+}
+
+.step__more {
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--color-muted);
+}
+
+/* Short screens (small phones, or the browser bars showing): tighter text, leave out the extra line. */
+@media (max-height: 640px) {
+  .step__title {
+    font-size: 28px;
+  }
+
+  .step__lead {
+    font-size: 16px;
+  }
+
+  .step__more {
+    display: none;
+  }
+}
+
+/*
+ * Phones held sideways (a browser tab; the installed app is portrait only): the picture goes
+ * next to the text and gets the full height, instead of being squeezed out above it.
+ */
+@media (orientation: landscape) and (max-height: 500px) {
+  .step {
+    /* Sized by the intro's middle row, not by its content: the picture can take exactly that height. */
+    container-type: size;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    grid-template-rows: repeat(4, auto) minmax(0, 1fr);
+    column-gap: 24px;
+    row-gap: 12px;
+    align-content: start;
+  }
+
+  .step > .art {
+    grid-column: 1;
+    grid-row: 1 / -1;
+    align-self: start;
+    /* Stays the visible height (and in view) when the text column is taller and scrolls. */
+    position: sticky;
+    top: 0;
+    height: 100cqh;
+    min-height: 0;
+  }
+
+  .step > :not(.art) {
+    grid-column: 2;
+  }
+}

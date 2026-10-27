@@ -1,0 +1,45 @@
+{
+  "appName": "Krümel",
+  "nav": {
+    "label": "Hauptmenü",
+    "today": "Heute",
+    "week": "Woche"
+  },
+  "pageTitle": {
+    "today": "Heute",
+    "week": "Deine Woche",
+    "variety": "Deine Vielfalt",
+    "tree": "Mein Baum",
+    "settings": "Einstellungen",
+    "tiles": "Meine Kacheln",
+    "intro": "Willkommen"
+  },
+  "actions": {
+    "done": "Fertig",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "close": "Schließen",
+    "undo": "Rückgängig",
+    "delete": "Löschen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "skip": "Überspringen",
+    "start": "Los geht's"
+  },
+  "toast": {
+    "region": "Hinweise",
+    "announce": "Hinweis",
+    "actionAlt": "{action} mit Strg+Z"
+  },
+  "update": {
+    "available": "Es gibt eine neue Version.",
+    "reload": "Neu laden"
+  },
+  "error": {
+    "failed": "Das hat gerade nicht geklappt und wurde nicht gespeichert. Bitte versuch es noch einmal."
+  },
+  "startError": {
+    "title": "Das Tagebuch kann gerade nicht starten",
+    "text": "Dein Browser erlaubt der App keinen Speicher. Das passiert manchmal im privaten Modus. Öffne die App bitte in einem normalen Fenster."
+  }
+}

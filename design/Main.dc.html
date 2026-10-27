@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Heute</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#5B3FE0}a:hover{color:#4128B8}
+button{-webkit-tap-highlight-color:transparent}
+button:active{transform:scale(0.96)}
+</style>
+</helmet>
+<div style="position: relative; width: 390px; height: 844px; box-sizing: border-box; background: #F6F3FF; color: #231F3A; font-family: Nunito, system-ui, sans-serif; display: flex; flex-direction: column; padding: 28px 20px 20px; gap: 14px; overflow: hidden">
+
+  <header style="display: flex; justify-content: space-between; align-items: flex-end">
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <span style="font-size: 14px; font-weight: 700; color: #5E5878">{{dateLabel}}</span>
+      <h1 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 26px; line-height: 1.1">{{greeting}}, Mia</h1>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px">
+      <a href="Tree.dc.html" aria-label="Mein Baum, {{leafCount}} Blätter" style="display: flex; align-items: center; gap: 6px; height: 44px; box-sizing: border-box; background: #FFFFFF; border-radius: 999px; padding: 0 14px 0 10px; font-weight: 800; font-size: 15px; color: #231F3A; text-decoration: none">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2E9E5B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-6"/><path d="M12 15c-4.5 0-7-2.5-7-6a7 7 0 0 1 14 0c0 3.5-2.5 6-7 6z" fill="#CDEFD6"/><path d="M12 15l-2.5-3M12 13l3-3"/></svg>
+        <span>{{leafCount}}</span>
+      </a>
+      <a href="Settings.dc.html" aria-label="Einstellungen" style="width: 44px; height: 44px; border-radius: 22px; background: #FFFFFF; display: flex; align-items: center; justify-content: center">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#231F3A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h9M18 7h2M4 17h3M12 17h8"/><circle cx="15.5" cy="7" r="2.5"/><circle cx="9.5" cy="17" r="2.5"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <section style="background: #FFFFFF; border-radius: 24px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <h2 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 20px">{{title}}</h2>
+      <span style="font-size: 13px; font-weight: 700; color: #5E5878">{{cheer}}</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+      <sc-for list="{{parts}}" as="p" hint-placeholder-count="3">
+        <button onClick="{{p.open}}" aria-label="{{p.aria}}" style="background: {{p.bg}}; border: 0; border-radius: 16px; padding: 10px; height: 104px; box-sizing: border-box; display: flex; flex-direction: column; align-items: stretch; gap: 5px; min-width: 0; text-align: left; font-family: Nunito, sans-serif; color: #231F3A; cursor: pointer">
+          <span style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 800; color: #5E5878">
+            <span>{{p.name}}</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8A84A3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </span>
+          <sc-for list="{{p.items}}" as="c" hint-placeholder-count="2">
+            <span style="display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; min-width: 0">
+              <span style="width: 9px; height: 9px; border-radius: 5px; background: {{c.dot}}; flex: none"></span>
+              <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{c.label}}</span>
+            </span>
+          </sc-for>
+          <sc-if value="{{p.more}}" hint-placeholder-val="{{ false }}">
+            <span style="font-size: 12px; font-weight: 700; color: #5E5878; padding-left: 15px">+{{p.moreCount}} mehr</span>
+          </sc-if>
+          <sc-if value="{{p.empty}}" hint-placeholder-val="{{ false }}">
+            <span style="font-size: 12px; font-weight: 600; color: #6F6890">{{p.emptyText}}</span>
+          </sc-if>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+
+    <button onClick="{{add.fruit}}" style="position: relative; height: 92px; border: 0; border-radius: 24px; background: #FFD3CB; color: #231F3A; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font: 700 15px Nunito, sans-serif; cursor: pointer">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#231F3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7.5c-2-1.5-7-1.2-7 4 0 4.2 3.2 8.5 5.5 8.5.8 0 1-.4 1.5-.4s.7.4 1.5.4c2.3 0 5.5-4.3 5.5-8.5 0-5.2-5-5.5-7-4z"/><path d="M12 7.5c0-2 .8-3.5 2.8-4.5"/></svg>
+      <span>Obst</span>
+      <sc-if value="{{has.fruit}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 8px; right: 8px; min-width: 24px; height: 24px; padding: 0 6px; box-sizing: border-box; border-radius: 12px; background: #231F3A; color: #FFFFFF; font: 800 13px Nunito, sans-serif; display: flex; align-items: center; justify-content: center">{{counts.fruit}}</span></sc-if>
+    </button>
+
+    <button onClick="{{add.veg}}" style="position: relative; height: 92px; border: 0; border-radius: 24px; background: #CDEFD6; color: #231F3A; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font: 700 15px Nunito, sans-serif; cursor: pointer">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#231F3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.5 8.5c-1.4-1.4-3.4-1.2-4.6 0L4.2 19.2c-.6.6-.0 1.2.6.6L15.5 13c1.2-1.2 1.4-3.2 0-4.5z"/><path d="M15.5 8.5L19 5M15 8l.5-4.5M16 9l4.5-.5"/><path d="M9 13l1.5 1.5M7 15.5l1.2 1.2"/></svg>
+      <span>Gemüse</span>
+      <sc-if value="{{has.veg}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 8px; right: 8px; min-width: 24px; height: 24px; padding: 0 6px; box-sizing: border-box; border-radius: 12px; background: #231F3A; color: #FFFFFF; font: 800 13px Nunito, sans-serif; display: flex; align-items: center; justify-content: center">{{counts.veg}}</span></sc-if>
+    </button>
+
+    <button onClick="{{add.bread}}" style="position: relative; height: 92px; border: 0; border-radius: 24px; background: #FFE6B8; color: #231F3A; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font: 700 15px Nunito, sans-serif; cursor: pointer">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#231F3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 11.5A3.2 3.2 0 0 1 7 5h10a3.2 3.2 0 0 1 1 6.5V19a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1z"/><path d="M10 9l-1.5 2M14.5 9L13 11"/></svg>
+      <span>Brot</span>
+      <sc-if value="{{has.bread}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 8px; right: 8px; min-width: 24px; height: 24px; padding: 0 6px; box-sizing: border-box; border-radius: 12px; background: #231F3A; color: #FFFFFF; font: 800 13px Nunito, sans-serif; display: flex; align-items: center; justify-content: center">{{counts.bread}}</span></sc-if>
+    </button>
+
+    <button onClick="{{add.meal}}" style="position: relative; height: 92px; border: 0; border-radius: 24px; background: #FFD7B8; color: #231F3A; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font: 700 15px Nunito, sans-serif; cursor: pointer">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#231F3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18c0 4.8-4 8-9 8s-9-3.2-9-8z"/><path d="M8.5 9c-.6-1 .6-2 0-3.5M12 9c-.6-1 .6-2 0-3.5M15.5 9c-.6-1 .6-2 0-3.5"/></svg>
+      <span>Warmes Essen</span>
+      <sc-if value="{{has.meal}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 8px; right: 8px; min-width: 24px; height: 24px; padding: 0 6px; box-sizing: border-box; border-radius: 12px; background: #231F3A; color: #FFFFFF; font: 800 13px Nunito, sans-serif; display: flex; align-items: center; justify-content: center">{{counts.meal}}</span></sc-if>
+    </button>
+
+    <button onClick="{{add.snack}}" style="position: relative; height: 92px; border: 0; border-radius: 24px; background: #E4DCFF; color: #231F3A; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font: 700 15px Nunito, sans-serif; cursor: pointer">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#231F3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10l-1.2 3 1.2 12-1.2 3H8.2L7 18 8.2 6z"/><path d="M9.5 10.5h5M10 14h4"/></svg>
+      <span>Snack</span>
+      <sc-if value="{{has.snack}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 8px; right: 8px; min-width: 24px; height: 24px; padding: 0 6px; box-sizing: border-box; border-radius: 12px; background: #231F3A; color: #FFFFFF; font: 800 13px Nunito, sans-serif; display: flex; align-items: center; justify-content: center">{{counts.snack}}</span></sc-if>
+    </button>
+
+    <button onClick="{{add.sweets}}" style="position: relative; height: 92px; border: 0; border-radius: 24px; background: #FFD1E6; color: #231F3A; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font: 700 15px Nunito, sans-serif; cursor: pointer">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#231F3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="9" cy="9.5" r="1"/><circle cx="14.5" cy="8.5" r=".8"/><circle cx="14" cy="14" r="1.1"/><circle cx="9" cy="14.8" r=".8"/></svg>
+      <span>Süßes</span>
+      <sc-if value="{{has.sweets}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 8px; right: 8px; min-width: 24px; height: 24px; padding: 0 6px; box-sizing: border-box; border-radius: 12px; background: #231F3A; color: #FFFFFF; font: 800 13px Nunito, sans-serif; display: flex; align-items: center; justify-content: center">{{counts.sweets}}</span></sc-if>
+    </button>
+
+    <button onClick="{{add.dairy}}" style="position: relative; height: 92px; border: 0; border-radius: 24px; background: #D3E8FF; color: #231F3A; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font: 700 15px Nunito, sans-serif; cursor: pointer">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#231F3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3h8v3l2 3v11a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V9l2-3z"/><path d="M6 9.5h12"/><path d="M9.5 14h5"/></svg>
+      <span>Milch &amp; Co</span>
+      <sc-if value="{{has.dairy}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 8px; right: 8px; min-width: 24px; height: 24px; padding: 0 6px; box-sizing: border-box; border-radius: 12px; background: #231F3A; color: #FFFFFF; font: 800 13px Nunito, sans-serif; display: flex; align-items: center; justify-content: center">{{counts.dairy}}</span></sc-if>
+    </button>
+
+    <button onClick="{{add.drink}}" style="position: relative; height: 92px; border: 0; border-radius: 24px; background: #EBDCCB; color: #231F3A; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font: 700 15px Nunito, sans-serif; cursor: pointer">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#231F3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9h12v5a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5z"/><path d="M17 10.5h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M9 3.5c-.5.8.5 1.5 0 2.5M13 3.5c-.5.8.5 1.5 0 2.5"/></svg>
+      <span>Kaffee &amp; Tee</span>
+      <sc-if value="{{has.drink}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; top: 8px; right: 8px; min-width: 24px; height: 24px; padding: 0 6px; box-sizing: border-box; border-radius: 12px; background: #231F3A; color: #FFFFFF; font: 800 13px Nunito, sans-serif; display: flex; align-items: center; justify-content: center">{{counts.drink}}</span></sc-if>
+    </button>
+
+    <a href="NewTile.dc.html" style="height: 92px; box-sizing: border-box; border: 2px dashed #A79FC9; border-radius: 24px; color: #5E5878; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font: 700 15px Nunito, sans-serif; text-decoration: none">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5E5878" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+      <span>Eigene</span>
+    </a>
+  </div>
+
+  <section style="background: #FFFFFF; border-radius: 24px; padding: 12px 16px; display: flex; flex-direction: column; gap: 8px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <h2 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 17px">Wasser</h2>
+      <span style="font-size: 13px; font-weight: 700; color: #5E5878">{{water}} von 8 Gläsern</span>
+    </div>
+    <div style="display: flex; justify-content: space-between">
+      <sc-for list="{{glasses}}" as="g" hint-placeholder-count="8">
+        <button onClick="{{g.pick}}" aria-label="Glas {{g.n}}" style="width: 36px; height: 36px; border: 0; padding: 0; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center">
+          <svg width="26" height="30" viewBox="0 0 24 28" stroke="#2F7FD8" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h16l-2 22H6z" fill="{{g.fill}}"/></svg>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <nav aria-label="Hauptmenü" style="margin-top: auto; display: flex; background: #231F3A; border-radius: 999px; padding: 6px">
+    <a href="Main.dc.html" aria-current="page" style="flex: 1; display: flex; align-items: center; justify-content: center; height: 44px; border-radius: 999px; background: #FFFFFF; color: #231F3A; font: 800 14px Nunito, sans-serif; text-decoration: none">Heute</a>
+    <a href="Week.dc.html" style="flex: 1; display: flex; align-items: center; justify-content: center; height: 44px; color: #FFFFFF; font: 700 14px Nunito, sans-serif; text-decoration: none">Woche</a>
+    <a href="Colors.dc.html" style="flex: 1; display: flex; align-items: center; justify-content: center; height: 44px; color: #FFFFFF; font: 700 14px Nunito, sans-serif; text-decoration: none">Farben</a>
+  </nav>
+
+  <sc-if value="{{toast}}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="position: absolute; left: 20px; right: 20px; bottom: 88px; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #231F3A; color: #FFFFFF; border-radius: 18px; padding: 6px 6px 6px 18px; font: 700 15px Nunito, sans-serif; box-shadow: 0 8px 24px rgba(35, 31, 58, 0.25)">
+      <span>{{toastText}}</span>
+      <button onClick="{{undo}}" style="height: 44px; padding: 0 16px; border: 0; border-radius: 14px; background: #3A3458; color: #D9CFFF; font: 800 15px Nunito, sans-serif; cursor: pointer">Rückgängig</button>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{sheetOpen}}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: rgba(35, 31, 58, 0.45); display: flex; flex-direction: column">
+      <button onClick="{{closeSheet}}" aria-label="Schließen" style="flex: 1; border: 0; background: transparent; cursor: pointer"></button>
+      <section role="dialog" aria-labelledby="part-title" style="background: #F6F3FF; border-radius: 28px 28px 0 0; padding: 12px 20px 28px; display: flex; flex-direction: column; gap: 10px">
+        <span aria-hidden="true" style="align-self: center; width: 44px; height: 5px; border-radius: 3px; background: #C9C2E3"></span>
+        <div style="display: flex; justify-content: space-between; align-items: center">
+          <h2 id="part-title" style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 24px">{{sheet.name}}</h2>
+          <button onClick="{{closeSheet}}" style="height: 44px; padding: 0 6px; border: 0; background: transparent; color: #5B3FE0; font: 800 15px Nunito, sans-serif; cursor: pointer">Fertig</button>
+        </div>
+        <sc-for list="{{sheet.items}}" as="e" hint-placeholder-count="3">
+          <div style="display: flex; align-items: center; gap: 12px; min-height: 56px; box-sizing: border-box; background: #FFFFFF; border-radius: 16px; padding: 6px 6px 6px 14px">
+            <span style="width: 12px; height: 12px; flex: none; border-radius: 6px; background: {{e.dot}}"></span>
+            <span style="flex: 1; font-size: 16px; font-weight: 700">{{e.label}}</span>
+            <span style="font-size: 14px; font-weight: 700; color: #5E5878">{{e.time}}</span>
+            <button onClick="{{e.remove}}" aria-label="{{e.label}} um {{e.time}} löschen" style="width: 44px; height: 44px; border: 0; border-radius: 12px; background: #F6F3FF; display: flex; align-items: center; justify-content: center; cursor: pointer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5E5878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>
+            </button>
+          </div>
+        </sc-for>
+        <sc-if value="{{sheet.empty}}" hint-placeholder-val="{{ false }}">
+          <p style="margin: 0; padding: 12px 0; font-size: 15px; font-weight: 600; color: #5E5878">Hier ist noch nichts eingetragen.</p>
+        </sc-if>
+      </section>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"empty":{"editor":"boolean","default":false},"$preview":{"width":390,"height":844}}'>
+var TILES = {
+  fruit: { label: 'Obst', dot: '#FF8F7E' },
+  veg: { label: 'Gemüse', dot: '#5FC67E' },
+  bread: { label: 'Brot', dot: '#F2BE55' },
+  meal: { label: 'Warmes Essen', dot: '#FF9F5C' },
+  snack: { label: 'Snack', dot: '#A893FF' },
+  sweets: { label: 'Süßes', dot: '#FF86BC' },
+  dairy: { label: 'Milch & Co', dot: '#73B1FF' },
+  drink: { label: 'Kaffee & Tee', dot: '#B9926A' }
+};
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    var empty = props.empty === true;
+    this.state = {
+      nextId: 4,
+      water: empty ? 0 : 3,
+      toastId: null,
+      openPart: null,
+      log: empty ? [] : [
+        { id: 1, k: 'bread', h: 7, t: '7:40' },
+        { id: 2, k: 'drink', h: 7, t: '7:42' },
+        { id: 3, k: 'fruit', h: 10, t: '10:15' }
+      ]
+    };
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.toastTimer);
+  }
+
+  renderVals() {
+    var self = this;
+    var s = this.state;
+    var empty = this.props.empty === true;
+    var now = new Date();
+    var hour = now.getHours();
+    var greeting = hour < 11 ? 'Guten Morgen' : hour < 17 ? 'Hallo' : 'Guten Abend';
+    var dateLabel = now.toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long' });
+    var nowPart = hour < 11 ? 0 : hour < 17 ? 1 : 2;
+
+    var counts = {}, has = {}, add = {};
+    Object.keys(TILES).forEach(function (k) {
+      var n = s.log.filter(function (e) { return e.k === k; }).length;
+      counts[k] = n;
+      has[k] = n > 0;
+      add[k] = function () {
+        var id = self.state.nextId;
+        var d = new Date();
+        self.setState({
+          log: self.state.log.concat([{ id: id, k: k, h: d.getHours(), t: d.getHours() + ':' + String(d.getMinutes()).padStart(2, '0') }]),
+          nextId: id + 1,
+          toastId: id
+        });
+        clearTimeout(self.toastTimer);
+        self.toastTimer = setTimeout(function () { self.setState({ toastId: null }); }, 3500);
+      };
+    });
+
+    var PART_NAMES = ['Morgens', 'Mittags', 'Abends'];
+    function entriesOf(i) {
+      return s.log.filter(function (e) {
+        var p = e.h < 11 ? 0 : e.h < 17 ? 1 : 2;
+        return p === i;
+      });
+    }
+
+    var parts = PART_NAMES.map(function (name, i) {
+      var entries = entriesOf(i);
+      var overflow = entries.length > 3;
+      var shown = overflow ? entries.slice(0, 2) : entries;
+      return {
+        name: name,
+        aria: name + ': ' + (entries.length === 1 ? '1 Eintrag' : entries.length + ' Einträge') + ', öffnen',
+        open: function () { self.setState({ openPart: i }); },
+        bg: i === nowPart ? '#EFEAFF' : '#F8F7FB',
+        items: shown.map(function (e) { return { label: TILES[e.k].label, dot: TILES[e.k].dot }; }),
+        more: overflow,
+        moreCount: entries.length - 2,
+        empty: entries.length === 0,
+        emptyText: i > nowPart ? 'Später' : 'Noch nichts'
+      };
+    });
+
+    var toastEntry = s.log.filter(function (e) { return e.id === s.toastId; })[0];
+
+    var sheetEntries = s.openPart === null ? [] : entriesOf(s.openPart);
+    var sheet = {
+      name: s.openPart === null ? '' : PART_NAMES[s.openPart],
+      empty: sheetEntries.length === 0,
+      items: sheetEntries.map(function (e) {
+        return {
+          label: TILES[e.k].label,
+          dot: TILES[e.k].dot,
+          time: e.t,
+          remove: function () {
+            self.setState({ log: self.state.log.filter(function (x) { return x.id !== e.id; }) });
+          }
+        };
+      })
+    };
+
+    var total = s.log.length;
+    var title = total === 0 ? 'Was gab es heute?' : total === 1 ? '1 Sache heute' : total + ' Sachen heute';
+    var cheer = total === 0 ? 'Tipp unten auf eine Kachel' : total < 3 ? 'Guter Start' : total < 6 ? 'Läuft' : 'Viel los heute';
+
+    var glasses = [];
+    for (var i = 0; i < 8; i++) {
+      (function (i) {
+        glasses.push({
+          n: i + 1,
+          fill: i < s.water ? '#8CC4FF' : '#FFFFFF',
+          pick: function () { self.setState({ water: s.water === i + 1 ? i : i + 1 }); }
+        });
+      })(i);
+    }
+
+    return {
+      greeting: greeting,
+      dateLabel: dateLabel,
+      leafCount: empty ? (total > 0 ? 1 : 0) : 23,
+      counts: counts,
+      has: has,
+      add: add,
+      parts: parts,
+      title: title,
+      cheer: cheer,
+      water: s.water,
+      glasses: glasses,
+      sheetOpen: s.openPart !== null,
+      sheet: sheet,
+      closeSheet: function () { self.setState({ openPart: null }); },
+      toast: !!toastEntry,
+      toastText: toastEntry ? TILES[toastEntry.k].label + ' eingetragen' : '',
+      undo: function () {
+        clearTimeout(self.toastTimer);
+        self.setState({
+          log: self.state.log.filter(function (e) { return e.id !== self.state.toastId; }),
+          toastId: null
+        });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

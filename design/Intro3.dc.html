@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Dein Baum</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&amp;family=Nunito:wght@500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#5B3FE0}a:hover{color:#4128B8}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F6F3FF; color: #231F3A; font-family: Nunito, system-ui, sans-serif; display: flex; flex-direction: column; padding: 20px 24px 28px; gap: 20px; overflow: hidden">
+
+  <div style="display: flex; justify-content: flex-end">
+    <a href="Intro4.dc.html" style="padding: 12px 4px; font-size: 15px; font-weight: 800; text-decoration: none">Überspringen</a>
+  </div>
+
+  <div style="align-self: center; width: 246px; height: 300px">
+    <dc-import name="TreeArt" days="{{ 30 }}" season="autumn" time="day" size="{{ 246 }}" hint-size="246px,300px"></dc-import>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <h1 style="margin: 0; font-family: Fredoka, Nunito, sans-serif; font-weight: 600; font-size: 34px">Dein Baum</h1>
+    <p style="margin: 0; font-size: 17px; line-height: 1.45; font-weight: 600; color: #4A4463">Für jeden Tag, an dem du etwas einträgst, wächst ein Blatt. Alle 7 Blätter kommt eine Blüte dazu, alle 30 ein Apfel.</p>
+    <p style="margin: 0; font-size: 15px; line-height: 1.45; font-weight: 600; color: #5E5878">Machst du mal ein paar Tage Pause, bleibt dein Baum, wie er ist.</p>
+  </div>
+
+  <div style="margin-top: auto; display: flex; flex-direction: column; gap: 18px">
+    <div aria-label="Schritt 3 von 4" role="img" style="display: flex; justify-content: center; gap: 6px">
+      <span style="width: 8px; height: 8px; border-radius: 4px; background: #CFC7EC"></span>
+      <span style="width: 8px; height: 8px; border-radius: 4px; background: #CFC7EC"></span>
+      <span style="width: 22px; height: 8px; border-radius: 4px; background: #6B4EFF"></span>
+      <span style="width: 8px; height: 8px; border-radius: 4px; background: #CFC7EC"></span>
+    </div>
+    <a href="Intro4.dc.html" style="height: 56px; border-radius: 999px; background: #6B4EFF; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font: 800 17px Nunito, sans-serif; text-decoration: none">Weiter</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

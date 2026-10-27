@@ -1,0 +1,39 @@
+{
+  "title": "Mein Baum",
+  "back": "Zurück zu Heute",
+  "seasons": {
+    "spring": "Frühling",
+    "summer": "Sommer",
+    "autumn": "Herbst",
+    "winter": "Winter"
+  },
+  "times": {
+    "morning": "Morgen",
+    "day": "Tag",
+    "evening": "Abend",
+    "night": "Nacht"
+  },
+  "timeLabel": "{season} · {time} · {clock}",
+  "heading": "Noch ein Samen | 1 Blatt | {n} Blätter",
+  "seedText": "Dein Baum wartet auf dein erstes Blatt.",
+  "nextFlower": "Nächste Blüte in {n} Blatt | Nächste Blüte in {n} Blättern",
+  "firstApple": "erster Apfel in {n}",
+  "nextApple": "nächster Apfel in {n}",
+  "legendLabel": "Was an deinem Baum wächst",
+  "legend": {
+    "leaf": "Blatt",
+    "leafText": "jeder Tag, an dem du was einträgst",
+    "flower": "Blüte",
+    "flowerText": "alle 7 Blätter",
+    "apple": "Apfel",
+    "appleText": "alle 30 Blätter",
+    "bird": "Vogel",
+    "birdText": "sagt Hallo, wenn du nach einer Pause zurück bist"
+  },
+  "status": {
+    "seed": "Trag heute etwas ein, dann wächst das erste Blatt.",
+    "fresh": "Das Blatt von heute ist da. Es hat einen weißen Rand.",
+    "waiting": "Trag heute etwas ein, dann wächst ein neues Blatt.",
+    "bird": "Schön, dass du wieder da bist. Der Vogel sagt Hallo."
+  }
+}
